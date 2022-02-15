@@ -20,7 +20,7 @@ get_header();
 		<!--<div class="img_statistics"><img src="https://api.isoyu.com/mm_images.php"  alt="姬长信api" /></div>-->
 		<div class="post_statistics">
 			
-			<div><?php echo simple_stats();?><?php counter_user_online()?></div>
+			<div><?php echo simple_stats();?>
 			</div>
 		
 		</div>
@@ -29,8 +29,8 @@ get_header();
 		
 
 	</div><!-- #primary -->
-      <?php the_reward(); ?>
-	<?php endwhile; ?> 
-
+     <?php the_reward(); ?>
+	 <?php endwhile; ?> 
 <?php
 get_footer();
+?>

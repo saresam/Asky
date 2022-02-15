@@ -86,7 +86,7 @@ function akina_setup() {
     remove_action('wp_head', 'index_rel_link');
     remove_action('wp_head', 'start_post_rel_link', 10, 0);
     remove_action('wp_head', 'wp_generator');
-	remove_action( 'wp_head', 'wp_generator' ); //隐藏wordpress版本
+	remove_action('wp_head', 'wp_generator'); //隐藏wordpress版本
     remove_filter('the_content', 'wptexturize'); //取消标点符号转义
     
 	remove_action('rest_api_init', 'wp_oembed_register_route');
@@ -254,9 +254,10 @@ function akina_scripts() {
 	wp_enqueue_style( 'siren', get_stylesheet_uri(), array(), SIREN_VERSION );
 	wp_enqueue_script( 'jq', get_template_directory_uri() . '/js/jquery.min.js', array(), SIREN_VERSION, true ); 
 	wp_enqueue_script( 'pjax-libs', get_template_directory_uri() . '/js/jquery.pjax.js', array(), SIREN_VERSION, true );
-	wp_enqueue_script( 'input', get_template_directory_uri() . '/js/input.min.js', array(), SIREN_VERSION, true );
+	wp_enqueue_script( 'qrcode', get_template_directory_uri() . '/js/qrcode.min.js', array(), SIREN_VERSION, true );
     wp_enqueue_script( 'app', get_template_directory_uri() . '/js/app.js', array('qrcode','jquery','jq','pjax-libs'), SIREN_VERSION, true );
-	wp_enqueue_script( 'qrcode', get_template_directory_uri() . '/js/qrcode.min.js', array(), SIREN_VERSION, false );
+	wp_enqueue_script( 'input', get_template_directory_uri() . '/js/input.min.js', array(), SIREN_VERSION, true );
+		
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
@@ -320,6 +321,15 @@ if(!function_exists('akina_comment_format')){
 								<div class="left">
 									<h4 class="author"><a href="<?php comment_author_url(); ?>" target="_blank"><?php echo get_avatar( $comment->comment_author_email, '24', '', get_comment_author() ); ?><?php comment_author(); ?> <span class="isauthor" title="<?php esc_attr_e('Author', 'akina'); ?>">博主</span></a></h4>
 								</div>
+								<?php /*?><?php 
+    								$comment_reply_class = 'uk-link-muted uk-text-small';
+									echo preg_replace( '/comment-reply-link/', 'comment-reply-link ' . $comment_reply_class, 
+        							get_comment_reply_link(array_merge( $args, array(
+            						'reply_text' => '回复', 
+									'depth' => $depth, 
+            						'max_depth' => $args['max_depth']))), 1 ); 
+								?><?php */?>
+								
 								<?php comment_reply_link(array_merge($args, array('depth' => $depth, 'max_depth' => $args['max_depth']))); ?>
 								<div class="right">
 									<div class="info"><time datetime="<?php comment_date('Y-m-d'); ?>"><?php echo poi_time_since(strtotime($comment->comment_date_gmt), true );//comment_date(get_option('date_format')); ?></time><?php echo siren_get_useragent($comment->comment_agent); ?></div>
@@ -592,8 +602,7 @@ function enable_more_buttons($buttons) {
 	return $buttons;
 } 
 add_filter("mce_buttons_3", "enable_more_buttons");
-// 下载按钮
-
+// 下载短代码
 function download($atts, $content = null) { 
 	if (akina_option('download_zan')=='1'){
 		$download_post_open = "specsZan";
@@ -603,6 +612,10 @@ return '<a  id = "download_link" class="download" href="'.$content.'" rel="exter
 target="_blank" title="下载地址" >  
 <span data-action="ding" data-id="'.$download_post_ID.'" class="'.$download_post_open.'" ><i class="iconfont icon-download"></i>Download</span></a>';  } 
 add_shortcode("download", "download"); 
+
+
+/*
+//用于添加编辑器按钮
 add_action('after_wp_tiny_mce', 'bolo_after_wp_tiny_mce');  
 function bolo_after_wp_tiny_mce($mce_settings) {  
 ?>  
@@ -612,7 +625,7 @@ QTags.addButton( 'download', '下载按钮', "[download]下载地址[/download]"
 function bolo_QTnextpage_arg1() {
 }  
 </script>  
-<?php } 
+<?php } */
 
 
 function add_quicktags() {
@@ -655,7 +668,7 @@ function custom_html() {
 	if ( akina_option('login_bg') ) {
 		$loginbg = akina_option('login_bg'); 
 	}else{
-		$loginbg = get_bloginfo('template_directory').'/images/hd.jpg';
+		$loginbg = get_bloginfo('template_directory').'/images/background.svg';
 	}
 	echo '<script type="text/javascript" src="'.get_bloginfo('template_directory').'/js/login.js"></script>'."\n";
 	echo '<script type="text/javascript">'."\n";
@@ -742,7 +755,7 @@ function image_alt($c) {
 	$s = array('/src="(.+?.(jpg|bmp|png|jepg|gif))"/i'=> 'src="$1" alt="'.$title.'"');
 	foreach($s as$p => $r){$c = preg_replace($p,$r,$c);
 						  }
-	return$c;
+	return $c;
 }
 
 
@@ -802,49 +815,21 @@ echo
 '<p><i class="iconfont icon-communityfill"></i>收到<span>', $stats['comments'], '</span>条评论</p><br>',
 '<p><i class="iconfont icon-heart"></i>收到<span>', $stats['specs_zan'], '</span>个赞</p><br>',
 //'<i class="iconfont icon-shuidi"></i><p用户总数:</p><span>', $stats['users'], '</span><p></p><br>',
-'<p><i class="iconfont icon-camera"></i>累计PV:<span>', $stats['total_view'], '</span></p><br>';
+'<p><i class="iconfont icon-camera"></i>文章查阅:<span>', $stats['total_view'], '</span>次</p><br>';
 }
 
-	
-		
-			
-				
-					
-
-function counter_user_online($temp){
-$user_online = "online.dat"; //保存人数的文件，网站根目录下
-$user_total =  "total.dat";
-touch($user_online);//如果没有此文件，则创建
-$timeout = 120;//120秒内没动作者,认为掉线
-$user_arr = (string)file_get_contents($user_online);
-$total_user =(int)file_get_contents($user_total);
-//如果当前ip在当前在线里边没有则总访问人数+1
-	if (strstr($user_arr,getenv('REMOTE_ADDR'))==false){
-		$total_user += 1;
-	}
-$user_arr = explode('#',rtrim($user_arr,'#'));
-$temp = array();
-	foreach($user_arr as $value){
-		$user = explode(",",trim($value));
-	if (($user[0] != getenv('REMOTE_ADDR')) && ($user[1] > time())) { //如果不是本用户IP并时间没有超时则放入到数组中
-		array_push($temp,$user[0].",".$user[1]);
-		} 
-	}	
-array_push($temp,getenv('REMOTE_ADDR').",".(time() + ($timeout)).'#'); //保存本用户的信息
-$user_arr = implode("#",$temp);	
-//写入文件
-$fp = fopen($user_online,"w");
-$ft = fopen($user_total,"w");
-flock($fp,LOCK_EX); //flock() 不能在NFS以及其他的一些网络文件系统中正常工作
-fputs($fp,$user_arr);
-fputs($ft,$total_user);
-flock($fp,LOCK_UN);
-fclose($fp);
-fclose($ft);
-echo
-'<p><i class="iconfont icon-avatar"></i>当前在线:<span>'.count($temp). '</span>人</p><br>', 
-'<p><i class="iconfont icon-good_fill"></i>您是第<span>'.$total_user. '</span>位仿客</p><br>';	
+function getip(){	
+if(getenv('HTTP_CLIENT_IP')) {
+    $onlineip = getenv('HTTP_CLIENT_IP');
+} elseif(getenv('HTTP_X_FORWARDED_FOR')) {
+    $onlineip = getenv('HTTP_X_FORWARDED_FOR');
+} elseif(getenv('REMOTE_ADDR')) {
+    $onlineip = getenv('REMOTE_ADDR');
+} else {
+    $onlineip = $HTTP_SERVER_VARS['REMOTE_ADDR'];
 }
+return $onlineip;   			
+}				
 
 
 //首页特色图片
@@ -865,50 +850,113 @@ function get_post_thumb( $return_src = 'true' ){
 
 
 //回复可见
-add_filter('the_content', 'hide');  
-add_filter('comment_text','hide');  
-function hide($content) {  
-    if (preg_match_all('/<!--hide start{?([\s\S]*?)}?-->([\s\S]*?)<!--hide end-->/i', $content, $matches)) {  
-        $params = $matches[1][0];  
-        $defaults = array('reply_to_this' => 'false');  
-        $params = wp_parse_args($params, $defaults);  
-        $stats = 'hide';  
-        if ($params['reply_to_this'] == 'true') {  
-            global $current_user;  
-            get_currentuserinfo();  
-            if ($current_user->ID) {  
-                $email = $current_user->user_email;  
-            } else if (isset($_COOKIE['comment_author_email_'.COOKIEHASH])) {  
-                $email = $_COOKIE['comment_author_email_'.COOKIEHASH];  
-            }  
-            $ereg = "^[_\.a-z0-9]+@([0-9a-z][0-9a-z-]+\.)+[a-z]{2,5}$";  
-            if (eregi($ereg, $email)) {  
-                global $wpdb;  
-                global $id;  
-                $comments = $wpdb->get_results("SELECT * FROM $wpdb->comments WHERE comment_author_email = '".$email."' and comment_post_id='".$id."'and comment_approved = '1'");  
-                if ($comments) {  
-                    $stats = 'show';  
-                }  
-            }  
-            $tip = __('<span class="vihide">抱歉，隐藏内容 <a href="#comments">回复</a> 后刷新可见</span>', 'hide');  
-        } else {  
-            if (isset($_COOKIE['comment_author_'.COOKIEHASH]) or current_user_can('level_0')) {  
-                $stats = 'show';  
-            }  
-            $tip = __();  
-        }  
-        $hide_notice = $tip;  
-        if ($stats == 'show') {  
-			
-            $content = str_replace($matches[0], $matches[2], $content);  
-        } else {  
-            $content = str_replace($matches[0], $hide_notice, $content);  
-        }  
-    }  
-    return  $content;  
-}  
-add_action('admin_footer', 'hide_footer_admin');
+//add_filter('the_content', 'hide');  
+//add_filter('comment_text','hide');  
+//function hide($content) {  
+//    if (preg_match_all('/<!--hide start{?([\s\S]*?)}?-->([\s\S]*?)<!--hide end-->/i', $content, $matches)) { 
+//        $params = $matches[1][0];  
+//        $defaults = array('reply_to_this' => 'false');  
+//        $params = wp_parse_args($params, $defaults);  
+//        $stats = 'hide';  
+//        if ($params['reply_to_this'] == 'true') {  
+//            global $current_user;  
+//            wp_get_current_user();  
+//            if ($current_user->ID) {  
+//                $email = $current_user->user_email;  
+//            } else if (isset($_COOKIE['comment_author_email_'.COOKIEHASH])) {  
+//                $email = $_COOKIE['comment_author_email_'.COOKIEHASH];  
+//            }  
+//            $ereg = "^[_\.a-z0-9]+@([0-9a-z][0-9a-z-]+\.)+[a-z]{2,5}$";  
+//            if (eregi($ereg, $email)) {  
+//                global $wpdb;  
+//                global $id;  
+//                $comments = $wpdb->get_results("SELECT * FROM $wpdb->comments WHERE comment_author_email = '".$email."' and comment_post_id='".$id."'and comment_approved = '1'");  
+//                if ($comments) {  
+//                    $stats = 'show';  
+//                }  
+//            }  
+//            $tip = __('<span class="vihide">抱歉，隐藏内容 <a href="#comments">回复</a> 后刷新可见</span>', 'hide');  
+//        } else {  
+//            if (isset($_COOKIE['comment_author_'.COOKIEHASH]) or current_user_can('level_0')) {  
+//               $stats = 'show';  
+//            }  
+//            $tip = __('<span class="vihide">抱歉，这是可见的 <a href="#comments">回复</a> 后刷新可见</span>', 'hide');  
+//        }  
+//        $hide_notice = $tip;  
+//        if ($stats == 'show') {  
+//			
+//            $content = str_replace($matches[0], $matches[2], $content);  
+//        } else {  
+//            $content = str_replace($matches[0], $hide_notice, $content);  
+//        }  
+//    }  
+//    return  $content;  
+//}  
 
+
+//function article_index($content) {
+//$matches = array();
+//$ul_li = '';
+//$r = "/<h[23]>(.*)<\/h[23]>/im";
+//if(preg_match_all($r, $content, $matches)) {
+//foreach($matches[1] as $num => $title) {
+//$content = str_replace($matches[0][$num], '<h3 id="title-'.$num.'">'.$title.'</h3>', $content);
+//$ul_li .= '<li><a href="#title-'.$num.'" title="'.$title.'">'.$title."</a></li>\n";
+//}
+//$content = "\n<div id=\"article-index\" class=\"article-index hidden-xs\">
+//<strong class=\"title\">文章目录</strong>
+//<ul id=\"index-ul\" class=\"index-ul\">\n" . $ul_li . "</ul>
+//</div>\n" . $content;
+//}
+//return $content;
+//}
+//add_filter( "the_content", "article_index" );
+
+/*
+ *	文章页面导航
+ */
+ function article_index($content) {
+		 $matches = array();
+		 $ul_li = '';
+		 //匹配出 h2、h3 标题
+		 $rh = "/<h[23]>(.*)<\/h[23]>/im";
+		 $h2_num = 0;
+		 $h3_num = 0;
+		 //判断是否是文章页
+		 if(is_single() || !is_tag()){
+					if(preg_match_all($rh, $content, $matches)) {
+						 // 找到匹配的结果
+						 foreach($matches[1] as $num => $title) {
+								 $hx = substr($matches[0][$num], 0, 3);      //前缀，判断是 h2 还是 h3
+								 $start = stripos($content, $matches[0][$num]);  //匹配每个标题字符串在文章中的起始位置
+								 $end = strlen($matches[0][$num]);       //匹配每个标题字符串的长度
+								 if($hx == "<h2"){
+										 $h2_num += 1; //记录 h2 的序列，此效果请查看百度百科中的序号，如 1.1、1.2 中的第一位数
+										 $h3_num = 0;
+										 // 文章标题添加 id，便于目录导航的点击定位
+										 $content = substr_replace($content, '<h2 id="h2-'.$num.'">'.$title.'</h2>',$start,$end);
+										 $title = preg_replace('/<[^>]*>/', "", $title); //将 h2 里面的 a 链接或者其他标签去除，留下文字
+										 $ul_li .= '<li class="h2_nav"><a href="#h2-'.$num.'" class="tooltip" title="'.$title.'"><span>'.$title."</span></a></li>\n";
+								 }else if($hx == "<h3"){
+										 $h3_num += 1; //记录 h3 的序列，此熬过请查看百度百科中的序号，如 1.1、1.2 中的第二位数
+										 $content = substr_replace($content, '<h3 id="h3-'.$num.'">'.$title.'</h3>',$start,$end);
+										 $title = preg_replace('/<[^>]*>/', "", $title); //将 h3 里面的 a 链接或者其他标签去除，留下文字
+										 $ul_li .= '<li class="h3_nav"><a href="#h3-'.$num.'" class="tooltip" title="'.$title.'"><span>'.$title."</span></a></li>\n";
+								 }   
+						 }
+				 }
+				 // 将目录拼接到文章
+			     if($ul_li){
+				 $content =  $content . "<div class=\"total_nav\"><div class=\"nav_icon breath_animation\"><div id =\"nav_icon\" >目录</div></div><div class=\"post_nav\"><ul class=\"post_nav_content\">\n" . $ul_li . "</ul></div></div>\n";
+				 return $content;
+				}else{
+					 return $content;
+				 }
+		 }else if(is_home()){
+				 return $content;
+		 }
+ }
+ add_filter( "the_content", "article_index" );
 
 
 //站点维护中

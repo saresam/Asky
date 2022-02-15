@@ -1,4 +1,3 @@
-﻿0 20px@charset "utf-8";
 @charset "utf-8";
 /*
 Theme Name: ASky
@@ -6,7 +5,7 @@ Theme URI: http://skyarea.cn
 Author: Keith
 Author URI: http://skyarea.cn
 Description:调整了各种奇奇怪怪的东西，总之是和我自己的一样就是了。
-Version: 1.7
+Version: 1.8.1
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: Akina-Siren
@@ -132,8 +131,6 @@ html {
 
 body {
     margin: 0;
-    font: 300 17px miranafont,"Hiragino Sans GB",STXihei,"Microsoft YaHei",SimSun,sans-serif;
-    text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.1);
 }
 
 input:-webkit-autofill {
@@ -233,6 +230,7 @@ sub {
 
 img {
     border: 0;
+	border-radius: 8px;
 }
 
 svg:not(:root) {
@@ -240,7 +238,7 @@ svg:not(:root) {
 }
 
 figure {
-    margin: 1em 40px;
+    margin: 1em 1%;
 }
 
 hr {
@@ -358,8 +356,8 @@ textarea {
     color: #404040;
     font-family: sans-serif;
     font-size: 16px;
-    font-size: 15px;
-    line-height: 1.5;
+    font-size: 16px;
+    line-height: 1.7;
 }
 
 h1,
@@ -373,13 +371,13 @@ h6 {
 
 p {
     margin-bottom: 1.5em;
-    font-family: miranafont,"Hiragino Sans GB",STXihei,"Microsoft YaHei",SimSun,sans-serif;
+    font-family: miranafont,"Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "MicrosoftYaHei", "WenQuanYi Micro Hei", sans-serif;
 }
 
 .entry-content P {
 	text-indent:2.1em;
     margin-bottom: 1.5em;
-    font-family: miranafont,"Hiragino Sans GB",STXihei,"Microsoft YaHei",SimSun,sans-serif;
+    font-family: miranafont,"Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "MicrosoftYaHei", "WenQuanYi Micro Hei", sans-serif;
 }
 
 dfn,
@@ -433,7 +431,7 @@ blockquote p {
 
 form p {
     margin-bottom: 1.5em;
-    font-family: miranafont,"Hiragino Sans GB",STXihei,"Microsoft YaHei",SimSun,sans-serif;
+    font-family: miranafont,"Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "MicrosoftYaHei", "WenQuanYi Micro Hei", sans-serif;
 }
 
 address {
@@ -443,7 +441,7 @@ address {
 pre {
     background: #F8F8F8;
     font: 15px/22px;
-	font-family: miranafont,"Hiragino Sans GB",STXihei,"Microsoft YaHei",SimSun,sans-serif;
+	font-family: miranafont,"Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "MicrosoftYaHei", "WenQuanYi Micro Hei", sans-serif;
     line-height: 1.6;
     margin-bottom: 1.6em;
     max-width: 100%;
@@ -704,7 +702,7 @@ a:active {
     display: block;
     margin: 0 auto;
     padding: 0 20px;
-    font-family: miranafont,"Hiragino Sans GB",STXihei,"Microsoft YaHei",SimSun,sans-serif;
+    font-family: miranafont,"Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "MicrosoftYaHei", "WenQuanYi Micro Hei", sans-serif;
 }
 
 @keyframes fade-in {
@@ -809,7 +807,7 @@ a:active {
     background-color: rgba(0, 0, 0, 0.8);
     border-radius: 0;
     font-size: 18px;
-    font-family: miranafont,"Hiragino Sans GB",STXihei,"Microsoft YaHei",SimSun,sans-serif;
+    font-family: miranafont,"Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "MicrosoftYaHei", "WenQuanYi Micro Hei", sans-serif;
     -webkit-transition: .4s ease all;
     -moz-transition: .4s ease all;
     -o-transition: .4s ease all;
@@ -1090,7 +1088,7 @@ a:active {
 .site-top ul li a {
     padding: 10px 0;
     display: inline-block;
-    color: #666;
+    color: #000;
 }
 
 .site-top ul li a:hover {
@@ -1228,7 +1226,7 @@ a:active {
 --------------------------------------------------------------*/
 .site-main {
     padding: 40px 0 0;
-    font-family: miranafont,"Hiragino Sans GB",STXihei,"Microsoft YaHei",SimSun,sans-serif;
+    font-family: miranafont,"Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "MicrosoftYaHei", "WenQuanYi Micro Hei", sans-serif;
 }
 
 .site-content {
@@ -1318,7 +1316,7 @@ a:active {
 
 .entry-title a {
     color: #504E4E;
-    font-family: miranafont,"Hiragino Sans GB",STXihei,"Microsoft YaHei",SimSun,sans-serif;
+    font-family: miranafont,"Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "MicrosoftYaHei", "WenQuanYi Micro Hei", sans-serif;
 }
 
 .entry-title a:hover {
@@ -1332,7 +1330,7 @@ a:active {
     font-size: 12px;
     color: #989898;
     letter-spacing: 0;
-    font-family: din,'Hiragino Sans GB','Microsoft Yahei',Arial,sans-serif;
+    font-family: "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "MicrosoftYaHei", "WenQuanYi Micro Hei", sans-serif;
 }
 
 .p-time i {
@@ -1349,8 +1347,8 @@ i.iconfont.hotpost {
     min-height: 60px;
     margin: 0 0 0 17%;
     font-size: 15px;
-    font-family: miranafont,"Hiragino Sans GB",STXihei,"Microsoft YaHei",SimSun,sans-serif;
-    color: rgba(0,0,0,.66);
+    font-family: "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "MicrosoftYaHei", "WenQuanYi Micro Hei", sans-serif;
+    color: rgba(0, 0, 0);
     letter-spacing: 0;
     line-height: 30px;
 }
@@ -1490,8 +1488,8 @@ i.iconfont.hotpost {
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
     overflow: hidden;
-    margin-bottom: 5px;
-    margin-top: 10px;
+	margin-bottom: 5px;
+	margin-top: 5px;
 }
 
 .post-date,
@@ -1499,7 +1497,7 @@ i.iconfont.hotpost {
 .post-meta a {
     color: #888;
     font-size: 12px;
-    padding-right: 10px;
+	padding-right: 10px;
 }
 
 .comments-number {
@@ -1508,7 +1506,8 @@ i.iconfont.hotpost {
 
 .post-thumb {
     margin: auto;
-    width: 100%;
+    width: 92%;
+    float: right;
 }
 
 .post-thumb a {
@@ -1516,25 +1515,26 @@ i.iconfont.hotpost {
     position: relative;
     display: block;
     overflow: hidden;
-    border-radius: 8px;
+	border-radius: 8px;
 }
 .post-thumb a img {
    width: 100%;
+    float: right;
    height: 100%;
    object-fit: cover;
-    transition: all .6s
+   transition: all .6s
 }
 .post-list-thumb:hover .post-thumb a img {
     transform: scale(1.1)
 }
 
 .post-content-wrap {
-    text-align: left;
-    padding: 5px;
+	text-align: left;
+	padding: 5px;
     position: relative;
     display: inline-block;
     float: right;
-    padding: 5px;
+	padding: 1px;
     width: 100%;
 }
 
@@ -1546,16 +1546,16 @@ i.iconfont.hotpost {
     padding: 0;
     z-index: 500;
     background: #fff;
-    color: rgba(0,0,0,.66);
+    color: rgba(0, 0, 0);
 }
 
 .float-content .post-text {
     display: inline-block;
     text-align: justify;
-    font-size: 14px;
+    font-size: 15px;
 	word-break: break-all;
 	margin-bottom: 5px;
-    margin-top: 5px;
+	margin-top: 5px;
 }
 
 .float-content i {
@@ -1567,8 +1567,8 @@ i.iconfont.hotpost {
     float: left;
     padding-left: 20px;
     padding-right: 0;
-    text-align: left;
-    width: 100%;
+	text-align: left;
+	width: 100%;
 }
 
 .post-list-thumb-left .post-thumb {
@@ -1577,11 +1577,15 @@ i.iconfont.hotpost {
 
 @media (max-width: 768px) {
     .post-list-thumb {
-		border: 1px solid rgba(0,0,0,0.3);
+        border: 1px solid rgba(0,0,0,0.3);
 		padding: 2% 2%;
     }
 
-    .post-thumb,
+    .post-thumb {
+        width: 92%;
+        float: right;
+        left: 0;
+    }
     .post-content-wrap,
     .float-content {
         width: 100%;
@@ -1723,7 +1727,7 @@ i.iconfont.hotpost {
     text-align: center;
     font-size: 13px;
     color: #B9B9B9;
-    font-family: miranafont,"Hiragino Sans GB",STXihei,"Microsoft YaHei",SimSun,sans-serif;
+    font-family: "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "MicrosoftYaHei", "WenQuanYi Micro Hei", sans-serif;
 }
 
 .site-info a {
@@ -1792,6 +1796,16 @@ i.iconfont.hotpost {
 	border-radius: 5px;
 	background-color: #F9F9F9;
 }
+
+.entry-content h2 {
+    color: #FFFFFF;
+    background: #999999;
+    padding: 10px 0 10px 20px;
+    border-left: 5px solid #666;
+    font-weight: bolder;
+	border-radius: 3px;
+}
+
 .entry-content h3 {
     color: #4A4A4A;
     background: #F9F9F9;
@@ -1836,7 +1850,7 @@ i.iconfont.hotpost {
 .entry-content code {
     background: #525252;
     color: #FFFFFF;
-    font-family: miranafont,"Hiragino Sans GB",STXihei,"Microsoft YaHei",SimSun,sans-serif;
+    font-family: "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "MicrosoftYaHei", "WenQuanYi Micro Hei", sans-serif;
     padding: 4px 8px;
     border-radius: 2px;
 }
@@ -1856,7 +1870,7 @@ h1.entry-title {
 }
 
 .entry-content p {
-    color: #797979
+    color: #000000
 }
 .entry-content p img{
 	display: block;
@@ -1922,7 +1936,7 @@ h1.page-title {
     padding: 10px 15px;
     color: #828282;
     margin-bottom: 30px;
-    font-family: miranafont,"Hiragino Sans GB",STXihei,"Microsoft YaHei",SimSun,sans-serif;
+    font-family: "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "MicrosoftYaHei", "WenQuanYi Micro Hei", sans-serif;
 }
 
 h1.page-title.mb- {
@@ -2133,7 +2147,7 @@ color: #FF4646;
     width: 100%;
     margin: 55px 0;
     background: #000;
-    border-radius: 8px;
+	border-radius: 8px;
 }
 
 .post-squares .background {
@@ -2446,7 +2460,7 @@ h3#comments-list-title {
     padding: 12px 25px;
     z-index: 10000;
     margin-top: -4px;
-    border-radius: 8px;
+	border-radius: 8px;
 }   
 
 /*--------------------------------------------------------------
@@ -2698,7 +2712,7 @@ margin:0 !important
 --------------------------------------------------------------*/
 
 #archives-temp {
-    font-family: miranafont,"Hiragino Sans GB",STXihei,"Microsoft YaHei",SimSun,sans-serif;
+    font-family: "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "MicrosoftYaHei", "WenQuanYi Micro Hei", sans-serif;
     margin-top: 50px;
     margin-bottom: 100px;
 }
@@ -2993,6 +3007,7 @@ display: block;}
 
 .loginwords{
 	margin-bottom: 5px;
+	display: inline-block;
 }
 
 .comments .commentwrap hr {
@@ -3245,7 +3260,7 @@ border-bottom: 20px solid #FFFFFF;
     line-height: 20px;
     padding: 0 6px;
     border-radius: 3px;
-    opacity: 0;
+    opacity: .0;
 }
 
 .comment .contents:hover .comment-reply-link {
@@ -3382,35 +3397,44 @@ border-bottom: 20px solid #FFFFFF;
 }
 
 .comment-respond #cancel-comment-reply-link {
-    background: #f4f6f8;
+	background: #f4f6f8;
     border-radius: 3px;
     padding: 12px 25px;
     font-size: 12px;
     color: #454545;
 }
 
+.comment-respond #cancel-comment-reply-link:hover {
+    background:#DDE6EA;
+	-webkit-animation: btn-pudding 1s linear;
+	animation: btn-pudding 1s linear;
+
+}
+
 .comment-respond textarea, .comment-respond input {
-font-family: miranafont,"Hiragino Sans GB",STXihei,"Microsoft YaHei",SimSun,sans-serif;
-font-size: 14px;
-float: left;
-width: 31.5%;
-margin: 0;
-padding: 16px 25px 15px;
-color: #535a63;
-border: 0;
-border-radius: 0px;
-background: #FFFFFF; }
+	font-family: miranafont,"Hiragino Sans GB",STXihei,"Microsoft YaHei",SimSun,sans-serif;
+	font-size: 14px;
+	float: left;
+	width: 31.5%;
+	margin: 0;
+	padding: 16px 25px 15px;
+	color: #535a63;
+	border: 0;
+	border-radius: 0px;
+	background: #FFFFFF;
+}
 
 .comment-respond input {
-margin-bottom: 5px;
-border: 2px solid #DDE6EA;
-margin-right: 3%;
-border-radius: 8px;
+	margin-bottom: 5px;
+	border: 2px solid #DDE6EA;
+	margin-right: 3%;
+	border-radius: 8px;
 }
 
 .comment-respond input:last-of-type {
- margin-right:0;
- width: 31%;}
+	margin-right:0;
+	width: 31%;
+}
 
 @media (max-width: 625px) {
 .comment-respond input {
@@ -3428,13 +3452,13 @@ margin-bottom: 5px; }
     margin-bottom: 5px;
     color: #535a63;
     border: 1px solid #ddd;
-    border-radius: 8px;
+	border-radius: 8px;
 }
 
 @media (max-width: 625px) {
     .comment-respond textarea {
         margin-top: 5px;
-        border-radius: 8px;
+		border-radius: 8px;
     }
 }
 
@@ -5713,27 +5737,6 @@ i.iconfont.icon-download {
 
 
 /*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/  
-::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-    background-color: #eee;
-}
-
-#mo-nav::-webkit-scrollbar {
-    width: 0px;
-    opacity: 0;
-}  
-
-/*定义滚动条轨道 内阴影+圆角*/  
-::-webkit-scrollbar-track {
-    background-color: #eee;
-}  
-
-/*定义滑块 内阴影+圆角*/  
-::-webkit-scrollbar-thumb {
-    background-color: #69d2e7;
-}
-
 .cd-top:hover {
     /*-webkit-animation: btn-pudding 2s linear;
     animation: btn-pudding 2s linear;*/
@@ -6748,3 +6751,184 @@ z-index: 999;
     }
 }
 
+
+ /*文章目录*/
+.total_nav{
+	z-index: 999;
+    position: fixed;
+    bottom: 16%;
+    right: 1%;
+}
+.nav_icon {
+    position: absolute;
+    right: 0%;
+    bottom: 0%;
+    width: 0px;
+    height: 0px;
+    border-radius: 50%;
+    background-color: #666;
+    transition: all .5s ease-in-out;
+    cursor: pointer;
+    opacity: .8;
+    border-style: solid;
+	background-color: #6ec1fb;
+    border-color: #0990ef #6ec1fb;
+    border-width: 30px 30px;
+}
+
+#nav_icon{
+	position: relative;
+    width: 40px;
+    line-height: 20px;
+    left: -20px;
+    top: -10px;
+    text-align: center;
+    font-weight: bold;
+    color: #f9f9f9;
+}
+.breath_animation{
+	background-color: #f9ba61;
+    border-color: #fe9600 #f9ba61;
+	-webkit-animation-timing-function: linear;
+    -webkit-animation-name: breathe;
+    -webkit-animation-duration: 4000ms;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-direction:normal;
+	
+}
+
+@-webkit-keyframes breathe {
+0% {
+	transform:rotate(0deg);
+	-ms-transform:rotate(0deg); 	/* IE 9 */
+	-moz-transform:rotate(0deg); 	/* Firefox */
+	-webkit-transform:rotate(0deg); /* Safari 和 Chrome */
+	-o-transform:rotate(0deg); 
+	box-shadow:0 0 1px rgba(255,255,255,0.1);
+}
+50% {
+	transform:rotate(180deg);
+	-ms-transform:rotate(180deg); 	/* IE 9 */
+	-moz-transform:rotate(180deg); 	/* Firefox */
+	-webkit-transform:rotate(180deg); /* Safari 和 Chrome */
+	-o-transform:rotate(180deg); 
+	box-shadow:0 0 50px rgba(245,106,55,1)  ;
+}
+100% {
+	transform:rotate(360deg);
+	-ms-transform:rotate(360deg); 	/* IE 9 */
+	-moz-transform:rotate(360deg); 	/* Firefox */
+	-webkit-transform:rotate(360deg); /* Safari 和 Chrome */
+	-o-transform:rotate(360deg); 
+	box-shadow:0 0 1px rgba(255,255,255,0.1);
+}
+}
+.post_nav{
+	border: solid 1px #cecece;
+    background-color: #666;
+    opacity: 0;
+    position: relative;
+    bottom: -999px;
+    right: 60px;
+    border-radius: 10px;
+	overflow-y: scroll;
+	display: none;
+}
+
+.post_nav_hidden{
+	display:block;
+}
+
+.post_nav .post_nav_content {
+    height: auto;
+    margin: 20px;
+    padding: 0;
+    position: relative;
+    max-height: 520px;
+    background: none;
+    border: none;
+/*    border-left: #eee 3px solid;
+    text-indent: 0;
+    list-style: none;*/
+}
+.post_nav .post_nav_content li{
+	padding: 0px;
+    margin: 5px;
+    list-style: none;
+    border-radius: 5px;
+    width: 260px;
+}
+
+.post_nav .post_nav_content li:hover{
+	background-color: #FFFFFF;
+}
+
+.post_nav .post_nav_content .h2_nav{
+	padding-left: 0px;
+}
+
+.post_nav .post_nav_content .h2_nav a{
+	font-weight: bold;
+}
+
+.post_nav .post_nav_content .h3_nav{
+	padding-left: 20px;
+}
+
+.post_nav .post_nav_content li a:before {
+    content: '';
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #cecece;
+    transform: translate(-4px,3px);
+	
+}
+
+.post_nav .post_nav_content li a{
+	color: #cecece;
+    display: block;
+    padding: 10px;
+	overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+	text-decoration: none;
+}
+
+
+
+
+/*.post_nav .post_nav_content .h3_nav .tooltip{
+	color: white;
+}*/
+
+@media (max-width: 860px) {
+/*.total_nav {
+		
+		visibility: hidden;
+	}*/
+.nav_icon {
+     right: 4.2%;
+   border-width: 15px 15px;
+}
+#nav_icon{
+    width: 30px;
+    left: -15px;
+    font-size: 10px;
+}
+.post_nav .post_nav_content {
+    max-height: 450px;
+    overflow: overlay; 
+}
+.post_nav {
+  right: 40px;
+	}
+.post_nav .post_nav_content li {
+  width: 220px;
+}
+.post_nav .post_nav_content li a {
+  padding: 5px; 
+}
+
+}

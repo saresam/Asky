@@ -23,27 +23,6 @@
 			  if ( $site_description && ( is_home() || is_front_page() ) ) echo " - $site_description";if ( $paged >= 2 || $page >= 2 ) echo ' - ' . sprintf( __( '第 %s 页'), max( $paged, $page ) );?>
 	</title>
 
-	
-	
-	<!--网站标题自动判断	设置/*-->
-	<?php if(akina_option('web_title') !='0') { 
-		$onblur_text= akina_option('onblur');
-		$onfocus_text = akina_option('onfocus');
-		?>
-	<script>
-		var title = document.title;
-			// window 失去焦点 
-			window.onblur = function () {
-				document.title = '<?php echo $onblur_text ;?>';
-			};
-			// window 获得焦点 
-			window.onfocus = function () {
-				document.title = '<?php echo $onfocus_text ;?>';
-				setTimeout( "document.title=title", 3000 );
-			}
-	</script>
-	<?php }?>
-
 
 	<?php if ( akina_option( 'progress_type' ) == 'loadprogress' ) { ?>
 	<script src="<?php bloginfo('template_url'); ?>/js/nprogress.js"></script>
@@ -77,59 +56,14 @@
 	<?php } ?>
 	<link rel="shortcut icon" href="<?php bloginfo('template_url'); ?>/images/favicon.ico"/>
 	<?php wp_head(); ?>
-	<script type="text/javascript">
-		if ( !!window.ActiveXObject || "ActiveXObject" in window ) { //is IE?
-			alert( '请抛弃万恶的IE系列浏览器吧。' );
-		}
-	</script>
 
-	<!--/*阅读进度条js*/-->
-	<?php
-	if ( akina_option( 'progress_type' ) == 'readprogress' ) {?>
-		<script type="text/javascript">
-		document.onscroll = function () {
-			var scrollDistance = getScrollTop();
-			var pxx = scrollAct( scrollDistance )
-			document.getElementById( "readprogress" ).style.width = pxx;
-			
-		}
-
-		function scrollAct( insetOff ) {
-			var webHeight = document.body.scrollHeight - window.innerHeight;
-			var p = ( insetOff / webHeight ) * 100;
-			return p.toString() + "%";
-		}
-
-		function getScrollTop() {
-			var scrollPos;
-			if ( window.pageYOffset ) {
-				scrollPos = window.pageYOffset;
-			} else if ( document.compatMode && document.compatMode != 'BackCompat' ) {
-				scrollPos = document.documentElement.scrollTop;
-			} else if ( document.body ) {
-				scrollPos = document.body.scrollTop;
-			}
-			return scrollPos;
-		}
-	</script>
-	<?php }?>
 
 </head>
 
 <body <?php body_class(); ?>>
 
 
-
-	<!--/*阅读进度条布局*/-->
-
-	<?php
-	if ( akina_option( 'progress_type' ) == 'readprogress' ) {
-		?>
-	<div id="readprogress"></div>
-	<?php }?>
-
-
-	<section id="main-container">
+	<section id="main-container"> <!--/*启至footer*/-->
 
 		<?php 
 		if(!akina_option('head_focus')){ 

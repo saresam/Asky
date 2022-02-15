@@ -21,8 +21,19 @@ if(has_post_thumbnail()){
 }
 $the_cat = get_the_category();
 ?>
-	<article class="post post-list-thumb <?php echo $class; ?>" itemscope="" itemtype="http://schema.org/BlogPosting">
-		<a href="<?php the_permalink(); ?>" class="post-title"><h3 style="margin-left: 5px;"><?php the_title();?></h3></a>
+	<article class="post post-list-thumb" itemscope="" itemtype="http://schema.org/BlogPosting">
+	<a>
+		<a href="<?php the_permalink(); ?>">
+			    <img src="https://cbu01.alicdn.com/img/ibank/2020/092/836/20520638290_1413442486.50x50.jpg" style="float: left;border-radius: 15px;">
+	    	<a href="<?php the_permalink(); ?>" style="float: left;">
+		    	<h4 style="margin-left: 10px;margin-top: 0px;margin-bottom: 0px;">Peanut酱
+		    		<img src="https://cbu01.alicdn.com/img/ibank/2020/928/794/20520497829_1413442486.jpg" style="margin-left: 5px;">
+		    	</h4>
+		    	<span class="post-date" style="padding-left: 10px;"><i class="iconfont icon-clock"></i><?php echo poi_time_since(strtotime($post->post_date_gmt)); ?><?php if(is_sticky()) : ?><i class="iconfont hotpost icon-fire"></i><?php endif ?><?php esc_html_e(' 来自 博客 xinwei.life', 'akina'); ?>
+		    	</span>
+	    	</a></a>
+	</a>
+		<a href="<?php the_permalink(); ?>" class="post-title" style="width: 92%;float: right;"><h3><?php the_title();?></h3></a>
 		<?php if( !empty( get_post_thumb( ) ) ) : ?>
 			<div class="post-thumb">
 				<a href="<?php the_permalink(); ?>" title="<?php the_title();?>"><img src="<?php echo $post_img; ?>" " alt="<?php the_title();?>"></a>
@@ -31,14 +42,9 @@ $the_cat = get_the_category();
 		<div class="post-content-wrap">
 			<div class="post-content">
 				<div class="float-content">
-					<p class="post-text"><?php echo mb_strimwidth(strip_shortcodes(strip_tags(apply_filters('the_content', $post->post_content))), 0, 120," ...");?></p>
-					<div class="post-bottom">
-						<a href="<?php the_permalink(); ?>" class="button-normal"><i class="iconfont icon-more"></i></a>
-					</div>
+					<p class="post-text" style="width: 92%;float: right;"><?php echo mb_strimwidth(strip_shortcodes(strip_tags(apply_filters('the_content', $post->post_content))), 0, 280," ...");?></p>
 				</div>
-				<div class="post-meta">
-					<span class="post-date"><i class="iconfont icon-clock"></i><?php echo poi_time_since(strtotime($post->post_date_gmt)); ?><?php if(is_sticky()) : ?><i class="iconfont hotpost icon-fire"></i><?php endif ?>
-					</span>
+				<div class="post-meta" style="margin-top: 10px;width: 92%;float: right;">
 					<span><i class="iconfont icon-eye"></i><?php echo get_post_views(get_the_ID()); ?> </span>
 					<span class="comments-number"><i class="iconfont icon-mark"></i><?php comments_popup_link('0', '1 ', '% '); ?>
 					</span>

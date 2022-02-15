@@ -7,9 +7,6 @@
 
 // baguetteBox Libs
 
-
-
-
 var baguetteBox = function() {
     function t(t, n) {
         H.transforms = f(), H.svg = g(), e(), j = document.querySelectorAll(t), [].forEach.call(j, function(t) {
@@ -361,15 +358,19 @@ var home = location.href,
                 $('.js-search').toggleClass('is-visible');
             }
         });
+		
+	
 
         // 导航菜单
         $('#show-nav').on('click', function () {
             if($('#show-nav').hasClass('showNav')){
                 $('#show-nav').removeClass('showNav').addClass('hideNav');
                 $('.site-top .lower nav').addClass('navbar');
+				console.log("%c 打开菜单 %c","background:#9a9da2; color:#ffffff; border-radius:4px;","","http://skyarea.cn");
             }else{
                 $('#show-nav').removeClass('hideNav').addClass('showNav');
                 $('.site-top .lower nav').removeClass('navbar');
+				console.log("%c 关闭菜单 %c","background:#9a9da2; color:#ffffff; border-radius:4px;","","http://skyarea.cn");
             }
         });
 		
@@ -378,13 +379,17 @@ var home = location.href,
 		
         // 过渡动画
         $("#loading").click(function() {
+			console.log("%c 过渡动画 %c","background:#9a9da2; color:#ffffff; border-radius:4px;","","http://skyarea.cn");
             $("#loading").fadeOut(800);
+			
         });
+		// 过渡动画end
 		
+		//打开表情框
 		$(".smli-button").on('click', function(){
     	$(".smilies-box").fadeToggle("slow");
   		});
-		// 过渡动画end
+		
 		
 		$('#weixin').click(function(){
 			$("#qrcode-open").addClass("demo-open");
@@ -405,6 +410,26 @@ var home = location.href,
 			$("#qrcode-open").removeClass("demo-open");
 			$('#black_mask').removeClass("add_mask");
 		});
+		
+		
+		
+        //smooth show
+      //  $('.nav_icon').on('click', function(){
+//			var time =500;
+//			if ( $('#nav_icon').text() == '目录' ){
+//			$('.post_nav').animate({opacity: .8, bottom:"0px", }, time);
+//	console.log("%c 这是打开目录 %c","background:#9a9da2; color:#ffffff; border-radius:4px;","","http://skyarea.cn",time);
+//			$('#nav_icon').text("收起");
+//	console.log("%c 打开后改文字 %c","background:#9a9da2; color:#ffffff; border-radius:4px;","","http://skyarea.cn",time);
+//			} 
+//			else if( $('#nav_icon').text() == "收起" ){
+//			$('.post_nav').animate({opacity: 0 ,bottom:"-999px" }, time);
+//	console.log("%c 这是关闭目录 %c","background:#9a9da2; color:#ffffff; border-radius:4px;","","http://skyarea.cn",time);
+//			$('#nav_icon').text("目录"); 
+//	console.log("%c 关闭后改文字 %c","background:#9a9da2; color:#ffffff; border-radius:4px;","","http://skyarea.cn",time);	
+//		}
+//            
+//        });
 		
 		
 
@@ -684,7 +709,36 @@ var home = location.href,
                 }, scroll_top_duration
             );
         });
+    },
+    
+		//目录展开缩放
+	NV: function(){
+		  $('.nav_icon').on('click', function(){
+			var time =500;
+			if ( $('#nav_icon').text() == '目录' ){
+			$('.post_nav').addClass('post_nav_hidden');
+			$('.post_nav').animate({opacity: .95, bottom:"0px", }, time);
+			$('.nav_icon').removeClass('breath_animation');
+			$('#nav_icon').text("收起");
+			} 
+			else if( $('#nav_icon').text() == "收起" ){
+			$('.post_nav').animate({opacity: 0 ,bottom:"-999px" }, time);
+			$('.post_nav').removeClass('post_nav_hidden');
+			$('.nav_icon').addClass('breath_animation');
+			$('#nav_icon').text("目录"); 
+		}
+            
+        });
+		//点击跳到目录选择的地方
+		$('.tooltip').click(function(e) {
+					e.preventDefault();
+					$('html,body').animate({
+						scrollTop: $(this.hash).offset().top - 80
+					});
+				});
+        
     }
+		
 
 }
 
@@ -704,9 +758,10 @@ $(function() {
     Siren.LV(); // 加载视频
 	//Siren.QR();
 	Siren.SFS();
+	Siren.NV();
 
     if(Poi.pjax){
-        $(document).pjax("a[target!=_top][data-pjax!='0'][class!='download']", '#page', {
+        $(document).pjax("a[target!=_top][data-pjax!='0'][class!='download'][class!='comment-reply-link']", '#page', {
             fragment: '#page',
             timeout: 8000,
         }).on('pjax:send', function() {
@@ -716,8 +771,8 @@ $(function() {
             Siren.AH();
             Siren.PE();
             Siren.CE();
-			//Siren.QR();
-			 home = location.href;
+			Siren.NV();
+			home = location.href;
             $("#loading").fadeOut(500);
             //if(Poi.codelamp == 'open') { self.Prism.highlightAll(event) }; // 解决Prism.js代码高亮
             if($('.ds-thread').length > 0) {  // 解决多说问题
@@ -726,8 +781,8 @@ $(function() {
                }else{ 
                   $.getScript("//static.duoshuo.com/embed.js"); 
               }
-            }       
-        }).on('submit', '.search-form,.s-search', function (event) {
+            };       
+        }).on('submit', '.search-form,.s-search',function (event) {
             event.preventDefault();
             $.pjax.submit(event, '#page', {
                 fragment:'#page', 
@@ -741,7 +796,7 @@ $(function() {
         window.addEventListener('popstate',function(e) {
         	Siren.AH();
         	Siren.PE();
-        	Siren.CE();
+			Siren.CE();
         },false);
     }
 
@@ -837,5 +892,3 @@ function grin(tag) {
     		myField.focus();
     	}
     } 
-
-

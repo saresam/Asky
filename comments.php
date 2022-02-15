@@ -28,7 +28,7 @@
 			<?php if(have_comments()): ?>
 
 				<ul class="commentwrap">
-					<?php wp_list_comments('type=comment&callback=akina_comment_format&max_depth=10&style=li'); ?>	
+					<?php wp_list_comments('type=comment&callback=akina_comment_format&reply_text=回复&max_depth=10&style=li'); ?>	
 				</ul>
 
           <nav id="comments-navi">
@@ -51,9 +51,7 @@
 
 <div id="respond_box">
 	<div id="respond" class="comment-respond">
-		<div class="cancel-comment-reply">
-			<?php cancel_comment_reply_link('取消回复'); ?>
-		</div>
+		
 		<?php if ( get_option('comment_registration') && !$user_ID ) : ?>
 		<p><?php print '您必须'; ?><a href="<?php echo get_option('siteurl'); ?>/wp-login.php?redirect_to=<?php echo urlencode(get_permalink()); ?>"> [ 登录 ] </a>才能发表留言！</p>
     <?php else : ?>
@@ -102,8 +100,12 @@
      <?php include(TEMPLATEPATH . '/inc/smiley.php'); ?>
 	  </div>
 		</div>
+			<div class="comment_bottom">
 			<input class="submit" name="submit" type="submit" id="submit" tabindex="5" value="发表评论" />
+		    <?php cancel_comment_reply_link('取消'); ?> 
 			<?php comment_id_fields(); ?>
+			</div>
+			
 		
 		</div>
 		<?php do_action('comment_form', $post->ID); ?>
