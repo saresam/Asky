@@ -7,7 +7,10 @@ Siren-Akina 是基于 Akina 和 SirenMaseter 主题修改而来的，感谢[Fuzz
 最新版本：1.8.0
 
 主要修改：
+
 改成了单栏文章列表
+
 修改了一些细节，好像已经不适合大部分人使用。建议下载1.7.0
+
 
 修改后的演示站：https://xinwei.life
