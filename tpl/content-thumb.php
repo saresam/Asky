@@ -24,12 +24,12 @@ $the_cat = get_the_category();
 	<article class="post post-list-thumb" itemscope="" itemtype="http://schema.org/BlogPosting">
 	<a>
 		<a href="<?php the_permalink(); ?>">
-			    <img src="https://cbu01.alicdn.com/img/ibank/2020/092/836/20520638290_1413442486.50x50.jpg" style="float: left;border-radius: 15px;">
+			    <img src="<?php echo akina_option('focus_logo', ''); ?>" style="float: left;border-radius: 15px;height: 50px;width: 50px;">
 	    	<a href="<?php the_permalink(); ?>" style="float: left;">
-		    	<h4 style="margin-left: 10px;margin-top: 0px;margin-bottom: 0px;">Peanut酱
+		    	<h4 style="margin-left: 10px;margin-top: 0px;margin-bottom: 0px;"><?php bloginfo('name');?>
 		    		<img src="https://cbu01.alicdn.com/img/ibank/2020/928/794/20520497829_1413442486.jpg" style="margin-left: 5px;">
 		    	</h4>
-		    	<span class="post-date" style="padding-left: 10px;"><i class="iconfont icon-clock"></i><?php echo poi_time_since(strtotime($post->post_date_gmt)); ?><?php if(is_sticky()) : ?><i class="iconfont hotpost icon-fire"></i><?php endif ?><?php esc_html_e(' 来自 博客 xinwei.life', 'akina'); ?>
+		    	<span class="post-date" style="padding-left: 10px;"><i class="iconfont icon-clock"></i><?php echo poi_time_since(strtotime($post->post_date_gmt)); ?><?php if(is_sticky()) : ?><i class="iconfont hotpost icon-fire"></i><?php endif ?><?php esc_html_e(' 来自 博客 ', 'akina'); ?><?php bloginfo('url');?>
 		    	</span>
 	    	</a></a>
 	</a>
