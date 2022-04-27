@@ -8,7 +8,7 @@
 		
 
 <?php if ( akina_option('post_like') == 'yes') { ?>
-<div class="post-like">
+<div class="post-like"style="float: left !IMPORTANT;">
 <a href="javascript:;" data-action="ding" data-id="<?php the_ID(); ?>" class="specsZan <?php if(isset($_COOKIE['specs_zan_'.get_the_ID()])) echo 'done';?>" style="padding: 0px">
 	<i id="heart_zan" class="iconfont <?php if(isset($_COOKIE['specs_zan_'.get_the_ID()])){echo 'icon-heart';}  else {echo 'icon-heart_line';} ?>"></i> <span class="count">
 		<?php if( get_post_meta(get_the_ID(),'specs_zan',true) ){

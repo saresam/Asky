@@ -1,5 +1,4 @@
 <?php
- 
 	/**
 	 * COMMENTS TEMPLATE
 	 */
@@ -51,7 +50,7 @@
 
 <div id="respond_box">
 	<div id="respond" class="comment-respond">
-		
+		<?php $user_ID=""; ?>
 		<?php if ( get_option('comment_registration') && !$user_ID ) : ?>
 		<p><?php print '您必须'; ?><a href="<?php echo get_option('siteurl'); ?>/wp-login.php?redirect_to=<?php echo urlencode(get_permalink()); ?>"> [ 登录 ] </a>才能发表留言！</p>
     <?php else : ?>

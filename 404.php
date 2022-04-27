@@ -20,7 +20,7 @@ if ( $site_description && ( is_home() || is_front_page() ) ) echo " - $site_desc
 </head>
 <body <?php body_class(); ?>>
 <section class="error-404 not-found">
-<div class="page_error">您要的经书404了</div>	
+<div class="page_error">施主，您要取的经书404了</div>	
 <div class="err-button back">
 <a id="golast" href=javascript:history.go(-1);>返回女儿国</a>
 <a id="gohome" href="<?php bloginfo('url');?>">返回东土大唐</a>  

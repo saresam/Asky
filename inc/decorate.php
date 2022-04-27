@@ -23,8 +23,17 @@ if ( akina_option('site_custom_style') ) {
 // Custom style end ?>
 <?php // liststyle
 if ( akina_option('list_type') == 'square') { ?>
+.post-thumb a{ border-radius: 0px; !important; }
+.post-list-thumb{ border-radius: 0px; !important; }
+.comment-respond textarea{ border-radius: 0px; !important; }
+.comment-respond input{ border-radius: 0px; !important; }
+.comment-respond input:last-of-type{ border-radius: 0px; !important; }
+.entry-content p img{ border-radius: 0px; !important; }
+.post-squares{ border-radius: 0px; !important; }
 .feature img{ border-radius: 0px; !important; }
 .feature i { border-radius: 0px; !important; }
+.wp-block-image{ border-radius: 0px; !important; }
+img{ border-radius: 0px; !important; }
 <?php } // liststyle ?>
 <?php // comments
 if ( akina_option('toggle-menu') == 'no') { ?>

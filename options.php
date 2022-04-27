@@ -159,7 +159,7 @@ function optionsframework_options() {
 
 	$options[] = array(
 		'name' => __('头部装饰图', 'options_framework_theme'),
-		'desc' => __('默认开启，勾选关闭，显示在文章页面，独立页面以及分类页', 'options_framework_theme'),
+		'desc' => __('默认开启，勾选关闭。显示在文章页面，独立页面以及分类页', 'options_framework_theme'),
 		'id' => 'patternimg',
 		'std' => '0',
 		'type' => 'checkbox');
@@ -185,13 +185,13 @@ function optionsframework_options() {
 		));
 
 	$options[] = array(
-		'name' => __('首页文章特色图（仅对标准风格生效）', 'akina'),
+		'name' => __('首页文章特色图（仅对上个选项中的图文风格生效）', 'akina'),
 		'id' => 'list_type',
 		'std' => "round",
 		'type' => "radio",
 		'options' => array(
-			'round' => __('圆形', ''),
-			'square' => __('方形', '')
+			'round' => __('圆角', ''),
+			'square' => __('直角', '')
 		));	
 			
 	$options[] = array(
@@ -256,7 +256,7 @@ function optionsframework_options() {
 
 	$options[] = array(
 		'name' => __('社交信息', 'options_framework_theme'),
-		'desc' => __('默认开启，勾选关闭，显示头像、签名、SNS', 'options_framework_theme'),
+		'desc' => __('默认开启，勾选关闭。显示头像、签名、SNS', 'options_framework_theme'),
 		'id' => 'focus_infos',
 		'std' => '0',
 		'type' => 'checkbox');
@@ -291,14 +291,14 @@ function optionsframework_options() {
 
 	 $options[] = array(
 		'name' => __('开启视频-视频名称', 'options_framework_theme'),
-		'desc' => __('abc.mp4 ，只需要填写视频名称 abc 即可，多个用英文逗号隔开如 abc,efg ，无需在意顺序，因为加载是随机的抽取的 ', 'options_framework_theme'),
+		'desc' => __('例如abc.mp4 ，只需要填写视频名称 abc 即可，多个用英文逗号隔开如 abc,efg ，无需在意顺序，因为加载是随机的抽取的 ', 'options_framework_theme'),
 		'id' => 'amv_title',
 		'std' => '',
 		'type' => 'text');
 
 	 $options[] = array(
 		'name' => __('个人头像', 'options_framework_theme'),
-		'desc' => __('最佳高度尺寸130px。', 'options_framework_theme'),
+		'desc' => __('可以直接填写头像图片URL地址，最佳高度尺寸130px。', 'options_framework_theme'),
 		'id' => 'focus_logo',
 		'type' => 'upload');
 	

@@ -231,6 +231,14 @@ sub {
 img {
     border: 0;
 	border-radius: 8px;
+    height: auto;
+ /* Make sure images are scaled correctly. */
+    max-width: 100%;
+ /* Adhere to container width. */
+}
+
+.wp-block-image{
+	border-radius: 8px;
 }
 
 svg:not(:root) {
@@ -543,13 +551,6 @@ dt {
 
 dd {
     margin: 0 1.5em 1.5em;
-}
-
-img {
-    height: auto;
- /* Make sure images are scaled correctly. */
-    max-width: 100%;
- /* Adhere to container width. */
 }
 
 table {

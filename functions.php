@@ -368,11 +368,15 @@ function set_post_views() {
     $post_id = intval($post->ID);
     $count_key = 'views';
     $views = get_post_custom($post_id);
-    $views = intval($views['views'][0]);
-    if(is_single() || is_page()) {
-        if(!update_post_meta($post_id, 'views', ($views + 1))) {
-            add_post_meta($post_id, 'views', 1, true);
+    if( !empty($views['views'][0]) ) {
+        $views = intval($views['views'][0]);
+        if(is_single() || is_page()) {
+            if(!update_post_meta($post_id, 'views', ($views + 1))) {
+                add_post_meta($post_id, 'views', 1, true);
+            }
         }
+    }else{
+        add_post_meta($post_id, 'views', 1, true);
     }
 }
 add_action('get_header', 'set_post_views');
@@ -383,12 +387,16 @@ add_action('get_header', 'set_post_views');
 function get_post_views($post_id) {
     $count_key = 'views';
     $views = get_post_custom($post_id);
-    $views = intval($views['views'][0]);
-    $post_views = intval(post_custom('views'));
-    if($views == '') {
-        return 0;
+    if( !empty($views['views'][0]) ) {
+        $views = intval($views['views'][0]);
+        $post_views = intval(post_custom('views'));
+        if($views == '') {
+            return 0;
+        }else{
+            return restyle_text($views);
+        }
     }else{
-        return restyle_text($views);
+        add_post_meta($post_id, 'views', 1, true);
     }
 } 
 
@@ -836,6 +844,7 @@ return $onlineip;
 function get_post_thumb( $return_src = 'true' ){
 	global $post, $posts;
 	$content = $post->post_content;
+	$imgResult = '';
 	$pattern = '/<img.+src=[\'"]([^\'"]+)[\'"].*>/i';
 	$result = preg_match_all( $pattern, $content, $matches );
 	if ( $return_src == 'true' ){
@@ -893,6 +902,16 @@ function get_post_thumb( $return_src = 'true' ){
 //    return  $content;  
 //}  
 
+add_filter( 'get_avatar' , 'inlojv_custom_avatar' , 10 , 5 );
+function inlojv_custom_avatar( $avatar, $id_or_email, $size, $default, $alt) {
+		global $comment,$current_user;
+		$current_email =  is_int($id_or_email) ? get_user_by( 'ID', $id_or_email )->user_email : $id_or_email;
+		$email = !empty($comment->comment_author_email) ? $comment->comment_author_email : $current_email ;
+		$email_hash = md5(strtolower(trim($email)));
+		$src = 'https://pic.imgdb.cn/api/avatar';
+		$avatar = "<img alt='{$alt}' src='//sdn.geekzu.org/avatar/{$email_hash}?d=404' onerror='javascript:this.src=\"{$src}\";this.onerror=null;' class='avatar avatar-{$size} photo' height='{$size}' width='{$size}' />";
+    return $avatar;
+}
 
 //function article_index($content) {
 //$matches = array();
@@ -958,6 +977,10 @@ function get_post_thumb( $return_src = 'true' ){
  }
  add_filter( "the_content", "article_index" );
 
+add_action('login_head', 'wpdx_remove_language');
+function wpdx_remove_language(){
+	echo '<style type="text/css">.language-switcher { display:none; }</style>';
+}
 
 //站点维护中
 //function lxtx_wp_maintenance_mode(){
