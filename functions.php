@@ -740,15 +740,13 @@ function comment_mail_notify($comment_id){
 			    <p style="float: left;margin:0px 10px 60px 0px;">' . get_avatar( get_comment($parent_id)->comment_author_email, '50', '', '' ) . '</p>
 				<p style="font-size: 14px;">' . trim(get_comment($parent_id)->comment_author) . '</p>
 				<p style="color: #b1b1b1;">' . trim(get_comment($parent_id)->comment_date). '</p>
-				<p style="background: #fafafa;box-shadow: 0 2px 5px rgb(0 0 0 / 15%);margin: 15px 0;padding:15px;border-radius:8px;font-size:14px;color:#555;overflow: hidden;">'
-        . trim(get_comment($parent_id)->comment_content) . '</p>
+				<p style="background: #fafafa;box-shadow: 0 2px 5px rgb(0 0 0 / 15%);margin: 15px 0;padding:15px;border-radius:8px;font-size:14px;color:#555;overflow: hidden;">'. trim(get_comment($parent_id)->comment_content) . '</p>
 			</div>
 			<div style="margin: 0px 0px 0px 50px;">
 				<p style="float: left;margin:0px 10px 60px 0px;">' . get_avatar( $comment->comment_author_email, '50', '', get_comment_author() ) . '</p>
 				<p style="font-size: 14px;">' . trim($comment->comment_author) . '</p>
 				<p style="color: #b1b1b1;">' . trim($comment->comment_date). '</p>
-				<p style="background: #fafafa;box-shadow: 0 2px 5px rgb(0 0 0 / 15%);margin: 15px 0;padding:15px;border-radius:8px;font-size:14px;color:#555;overflow: hidden;">'
-        . trim($comment->comment_content) . '</p>
+				<p style="background: #fafafa;box-shadow: 0 2px 5px rgb(0 0 0 / 15%);margin: 15px 0;padding:15px;border-radius:8px;font-size:14px;color:#555;overflow: hidden;">'. trim($comment->comment_content) . '</p>
 			</div>
 		</div>
 	</div>
@@ -927,7 +925,7 @@ function inlojv_custom_avatar( $avatar, $id_or_email, $size, $default, $alt) {
 		$email = !empty($comment->comment_author_email) ? $comment->comment_author_email : $current_email ;
 		$email_hash = md5(strtolower(trim($email)));
 		$src = 'https://pic.imgdb.cn/api/avatar';
-		$avatar = "<img alt='{$alt}' src='//sdn.geekzu.org/avatar/{$email_hash}?d=404' onerror='javascript:this.src=\"{$src}\";this.onerror=null;' class='avatar avatar-{$size} photo' height='{$size}' width='{$size}' />";
+		$avatar = "<img alt='{$alt}' src='https://sdn.geekzu.org/avatar/{$email_hash}?d=404' onerror='javascript:this.src=\"{$src}\";this.onerror=null;' class='avatar avatar-{$size} photo' height='{$size}' width='{$size}' />";
     return $avatar;
 }
 
