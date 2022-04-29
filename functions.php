@@ -922,7 +922,7 @@ function inlojv_custom_avatar( $avatar, $id_or_email, $size, $default, $alt) {
 		$email = !empty($comment->comment_author_email) ? $comment->comment_author_email : $current_email ;
 		$email_hash = md5(strtolower(trim($email)));
 		$src = 'https://pic.imgdb.cn/api/avatar';
-		$avatar = "<img alt='{$alt}' src='https://sdn.geekzu.org/avatar/{$email_hash}?d=404' onerror='javascript:this.src=\"{$src}\";this.onerror=null;' class='avatar avatar-{$size} photo' height='{$size}' width='{$size}' width='{$size}' />";
+		$avatar = "<img alt='{$alt}' src='https://sdn.geekzu.org/avatar/{$email_hash}?d=404' onerror='javascript:this.src=\"{$src}\";this.onerror=null;' class='avatar avatar-{$size} photo' height='{$size}' width='{$size}' />";
     return $avatar;
 }
 
