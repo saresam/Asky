@@ -721,33 +721,51 @@ function comment_mail_notify($comment_id){
     $to = trim(get_comment($parent_id)->comment_author_email);
     $subject = '你在 [' . get_option("blogname") . '] 的留言有了回应';
     $message = '
-    <table border="1" cellpadding="0" cellspacing="0" width="600" align="center" style="border-collapse: collapse; border-style: solid; border-width: 1;border-color:#ddd;">
-	<tbody>
-          <tr>
-            <td>
-				<table align="center" border="0" cellpadding="0" cellspacing="0" width="600" height="48" >
-                    <tbody><tr>
-                        <td width="100" align="center" style="border-right:1px solid #ddd;"> '. get_option("blogname").'</td>
-                        <td width="300" style="padding-left:20px; color:#ec3409;"><strong>您有一条来自' . get_option("blogname") . ' 的回复,系统发送，请勿回复</strong></td>
-						</tr>
-					</tbody>
-				</table>
-			</td>
-          </tr>
-          <tr>
-            <td  style="padding:15px;"><p><strong>' . trim(get_comment($parent_id)->comment_author) . '</strong>, 你好!</span>
-              <p>你在《' . get_the_title($comment->comment_post_ID) . '》的留言:</p><p style="border-left:3px solid #ddd;padding-left:1rem;color:#999;">'
-        . trim(get_comment($parent_id)->comment_content) . '</p><p>
-              ' . trim($comment->comment_author) . ' 给你的回复:</p><p style="border-left:3px solid #ddd;padding-left:1rem;color:#999;">'
+    <div style="width: 650px;height: auto;border-radius: 8px;margin:0 auto;border:1px;box-shadow: 0px 0px 10px #888888;position: relative;padding-bottom: 5px;">
+	<div style="background-image: url(https://cbu01.alicdn.com/img/ibank/O1CN01KAzzdW1PNj9gzK3bX_!!2207679801829-0-cib.jpg);width:650px;height: 250px;background-size: cover;background-repeat: no-repeat;border-radius: 8px 8px 0px 0px;">
+	</div>
+	<div style="width: 27%;;height: 40px;background-color:#FE9600;margin-top: -20px;margin-left: 20px;box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);color: rgb(255, 255, 255);text-align: center;line-height: 40px;border-radius: 8px;">亲爱的: ' . trim(get_comment($parent_id)->comment_author) . '</div>
+	<div style="background-color:white;padding:0 15px 12px;margin:35px auto;font-size:12px;">
+		<h2 style="border-bottom:1px solid #DDD;font-size:14px;font-weight:normal;padding:13px 0 10px 8px;">
+			<span style="color: #12ADDB;font-weight: bold;">
+				&gt; &gt; &gt;
+			</span>
+			您在《
+			<a style="text-decoration:none;color: #12ADDB;" href="https://www.vian.top/257.html#comment-1051"
+			target="_blank" rel="noopener">' . get_the_title($comment->comment_post_ID) . '</a>
+			》的留言有了新的回复呐~
+		</h2>
+		<div style="padding:0 12px 0 12px;margin-top:18px">
+			<div>
+			    <p style="float: left;margin:0px 10px 60px 0px;">' . get_avatar( get_comment($parent_id)->comment_author_email, '50', '', '' ) . '</p>
+				<p style="font-size: 14px;">' . trim(get_comment($parent_id)->comment_author) . '</p>
+				<p style="color: #b1b1b1;">' . trim(get_comment($parent_id)->comment_date). '</p>
+				<p style="background: #fafafa;box-shadow: 0 2px 5px rgb(0 0 0 / 15%);margin: 15px 0;padding:15px;border-radius:8px;font-size:14px;color:#555;overflow: hidden;">'
+        . trim(get_comment($parent_id)->comment_content) . '</p>
+			</div>
+			<div style="margin: 0px 0px 0px 50px;">
+				<p style="float: left;margin:0px 10px 60px 0px;">' . get_avatar( $comment->comment_author_email, '50', '', get_comment_author() ) . '</p>
+				<p style="font-size: 14px;">' . trim($comment->comment_author) . '</p>
+				<p style="color: #b1b1b1;">' . trim($comment->comment_date). '</p>
+				<p style="background: #fafafa;box-shadow: 0 2px 5px rgb(0 0 0 / 15%);margin: 15px 0;padding:15px;border-radius:8px;font-size:14px;color:#555;overflow: hidden;">'
         . trim($comment->comment_content) . '</p>
-        <center ><a href="' . htmlspecialchars(get_comment_link($parent_id)) . '" target="_blank" style="background-color:#6ec3c8; border-radius:10px; display:inline-block; color:#fff; padding:15px 20px 15px 20px; text-decoration:none;margin-top:20px; margin-bottom:20px;">点击查看完整内容</a></center>
-</td>
-          </tr>
-          <tr>
-            <td align="center" valign="center" height="38" style="font-size:0.8rem; color:#999;">Copyright © '.get_option("blogname").'</td>
-          </tr>
-		  </tbody>
-  </table>';
+			</div>
+		</div>
+	</div>
+	<div style="color:#8c8c8c;font-size: 10px;text-align: center;">
+		<p style="padding:20px;">
+			邮件内容来源
+			<a href="'. get_bloginfo('url').'" rel="noopener" target="_blank">'. get_option("blogname").'的小站</a>
+		</p>
+	</div>
+	<a style="text-decoration:none;color:#FFF;width: 40%;text-align: center;background-color: #FE9600;height: 40px;line-height: 35px;box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.30);margin: -10px auto;display: block;border-radius: 8px"
+	href="' . htmlspecialchars(get_comment_link($parent_id)) . '" target="_blank" rel="noopener">
+		查看回复的完整內容
+	</a>
+	<div style="color:#8c8c8c;font-size: 10px;text-align: center;margin-top: 30px;">
+		本邮件为系统自动发送提醒，记得去原文回复哦~
+	</div>
+</div>';
     $from = "From: \"" . get_option('blogname') . "\" <$wp_email>";
     $headers = "$from\nContent-Type: text/html; charset=" . get_option('blog_charset') . "\n";
     wp_mail( $to, $subject, $message, $headers );
