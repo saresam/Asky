@@ -721,6 +721,7 @@ function comment_mail_notify($comment_id){
     $to = trim(get_comment($parent_id)->comment_author_email);
     $subject = '你在 [' . get_option("blogname") . '] 的留言有了回应';
     $message = '
+    <style type="text/css">img{border-radius: 8px;}</style>
     <div style="width: 650px;height: auto;border-radius: 8px;margin:0 auto;border:1px;box-shadow: 0px 0px 10px #888888;position: relative;padding-bottom: 5px;">
 	<div style="background-image: url(https://cbu01.alicdn.com/img/ibank/O1CN01KAzzdW1PNj9gzK3bX_!!2207679801829-0-cib.jpg);width:650px;height: 250px;background-size: cover;background-repeat: no-repeat;border-radius: 8px 8px 0px 0px;">
 	</div>
@@ -731,17 +732,15 @@ function comment_mail_notify($comment_id){
 				&gt; &gt; &gt;
 			</span>
 			您在《
-			<a style="text-decoration:none;color: #12ADDB;" href="https://www.vian.top/257.html#comment-1051"
+			<a style="text-decoration:none;color: #12ADDB;" href="'.get_permalink($comment->comment_post_ID) . '"
 			target="_blank" rel="noopener">' . get_the_title($comment->comment_post_ID) . '</a>
 			》的留言有了新的回复呐~
 		</h2>
 		<div style="padding:0 12px 0 12px;margin-top:18px">
-			<div>
 			    <p style="float: left;margin:0px 10px 60px 0px;">' . get_avatar( get_comment($parent_id)->comment_author_email, '50', '', '' ) . '</p>
 				<p style="font-size: 14px;">' . trim(get_comment($parent_id)->comment_author) . '</p>
 				<p style="color: #b1b1b1;">' . trim(get_comment($parent_id)->comment_date). '</p>
 				<p style="background: #fafafa;box-shadow: 0 2px 5px rgb(0 0 0 / 15%);margin: 15px 0;padding:15px;border-radius:8px;font-size:14px;color:#555;overflow: hidden;">'. trim(get_comment($parent_id)->comment_content) . '</p>
-			</div>
 			<div style="margin: 0px 0px 0px 50px;">
 				<p style="float: left;margin:0px 10px 60px 0px;">' . get_avatar( $comment->comment_author_email, '50', '', get_comment_author() ) . '</p>
 				<p style="font-size: 14px;">' . trim($comment->comment_author) . '</p>
@@ -756,7 +755,7 @@ function comment_mail_notify($comment_id){
 			<a href="'. get_bloginfo('url').'" rel="noopener" target="_blank">'. get_option("blogname").'的小站</a>
 		</p>
 	</div>
-	<a style="text-decoration:none;color:#FFF;width: 40%;text-align: center;background-color: #FE9600;height: 40px;line-height: 35px;box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.30);margin: -10px auto;display: block;border-radius: 8px"
+	<a style="text-decoration:none;color:#FFF;width: 40%;text-align: center;background-color: #FE9600;line-height: 40px;box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.30);margin: -10px auto;display: block;border-radius: 8px"
 	href="' . htmlspecialchars(get_comment_link($parent_id)) . '" target="_blank" rel="noopener">
 		查看回复的完整內容
 	</a>
