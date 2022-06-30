@@ -5,9 +5,9 @@ WordPress Theme
 我只是稍作修改，修改后的演示，请点击：https://xinwei.life
 
 # 由来介绍
-首先，感谢 [Fuzzz](http://www.akina.pw/) 创作出 Akina 主题
+首先，感谢 Fuzzz 创作出 Akina 主题
 
-然后，感谢 [路易](https://www.i94.me/) 在 Akina 的基础上作出 Siren
+然后，感谢 路易 在 Akina 的基础上作出 Siren
 
 最后，感谢 [keith](https://www.skyarea.cn/) 在前面两者基础上作出 Asky
 
