@@ -797,7 +797,7 @@ function sc_send( $comment_id
 	
 	$postdata = http_build_query(
     array(
-        'text' => $text,
+        'title' => $text,
         'desp' => $desp
     )
 );
@@ -810,7 +810,7 @@ $opts = array('http' =>
     )
 );
 $context  = stream_context_create($opts);
-return $result = file_get_contents('https://sc.ftqq.com/'.$key.'.send', false, $context);
+return $result = file_get_contents('https://sctapi.ftqq.com/'.$key.'.send', false, $context);
 }
 add_action('comment_post','sc_send',19,2);
 
