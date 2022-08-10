@@ -1446,7 +1446,7 @@ i.iconfont.hotpost {
     position: relative;
     margin: 20px 0 20px;
     padding: 25px;
-    border: 1px solid rgba(0,0,0,0.2);
+    box-shadow:rgba(23,25,29,0.2) 0px 16px 16px -16px,rgba(23,25,29,0.03) 0px 14px 20px 0px,rgba(23,25,29,0.24) 0px 0px 0px 1px;
 	border-radius: 8px;
     background-color: #FFFFFF;
 
@@ -6356,19 +6356,6 @@ i.iconfont.icon-people{
 	min-height:70px;
 }
 }
-
- 
-#readprogress {
-background-color: rgba(36,191,53,1.00);
-height: 3px;
-width: 0px;
-position: fixed;
-left: 0px;
-top: 0px;
-transition-duration:1s;
-z-index: 999;
-}
-
 
 
 /*

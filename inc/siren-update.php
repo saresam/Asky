@@ -49,7 +49,7 @@ function get_avatar_profile_url(){
 function get_random_bg_url(){
  if(akina_option('bgapi')){
 	 return akina_option('bgapi');
- }else{
+ }elseif(akina_option('focus_img_1')){
   $arr = array();
   for($i=0; $i<6; $i++){ 
     if(akina_option('focus_img_'.$i)){
@@ -58,6 +58,9 @@ function get_random_bg_url(){
   }
   $url = rand(0, count($arr)-1);
   return $arr[$url];
+ }else{
+  $url = get_bloginfo('template_url').'/images/hd.jpg';
+  return $url;
 }
 }
 
@@ -611,39 +614,6 @@ function siren_mark_private_message($comment_id){
 }
 add_action('comment_post', 'siren_mark_private_message');
 
-
-/*
- * 删除后台某些版权和链接
- * @wpdx
- */
-add_filter('admin_title', 'wpdx_custom_admin_title', 10, 2);
-function wpdx_custom_admin_title($admin_title, $title){
-    return $title.' &lsaquo; '.get_bloginfo('name');
-}
-//去掉Wordpress LOGO
-function remove_logo($wp_toolbar) {
-    $wp_toolbar->remove_node('wp-logo');
-}
-add_action('admin_bar_menu', 'remove_logo', 999);
-
-//去掉Wordpress 底部版权
-function change_footer_admin () {return '';}  
-add_filter('admin_footer_text', 'change_footer_admin', 9999);  
-function change_footer_version() {return '';}  
-add_filter( 'update_footer', 'change_footer_version', 9999);
-
-//去掉Wordpres挂件
-function disable_dashboard_widgets() {   
-    //remove_meta_box('dashboard_recent_comments', 'dashboard', 'normal');//近期评论 
-    //remove_meta_box('dashboard_recent_drafts', 'dashboard', 'normal');//近期草稿
-    remove_meta_box('dashboard_primary', 'dashboard', 'core');//wordpress博客  
-    remove_meta_box('dashboard_secondary', 'dashboard', 'core');//wordpress其它新闻  
-    //remove_meta_box('dashboard_right_now', 'dashboard', 'core');//wordpress概况  
-    //remove_meta_box('dashboard_incoming_links', 'dashboard', 'core');//wordresss链入链接  
-    //remove_meta_box('dashboard_plugins', 'dashboard', 'core');//wordpress链入插件  
-    //remove_meta_box('dashboard_quick_press', 'dashboard', 'core');//wordpress快速发布   
-}  
-add_action('admin_menu', 'disable_dashboard_widgets');
 
 
 /**

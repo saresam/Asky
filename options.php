@@ -159,7 +159,7 @@ function optionsframework_options() {
 
 	$options[] = array(
 		'name' => __('头部装饰图', 'options_framework_theme'),
-		'desc' => __('默认开启，勾选关闭。显示在文章页面，独立页面以及分类页', 'options_framework_theme'),
+		'desc' => __('默认开启，勾选关闭。显示在文章页面，独立页面以及分类页（需要设置特色图片才会显示）', 'options_framework_theme'),
 		'id' => 'patternimg',
 		'std' => '0',
 		'type' => 'checkbox');
@@ -177,7 +177,7 @@ function optionsframework_options() {
 	$options[] = array(
 		'name' => __('首页文章风格', 'akina'),
 		'id' => 'post_list_style',
-		'std' => "standard",
+		'std' => "imageflow",
 		'type' => "radio",
 		'options' => array(
 			'standard' => __('标准', ''),
@@ -389,8 +389,7 @@ function optionsframework_options() {
 		'type' => "radio",
 		'options' => array(
 			'progress_no' => __('不需要', ''),
-			'loadprogress' => __('加载进度', ''),
-			'readprogress' => __('浏览进度', '')
+			'loadprogress' => __('加载进度', '')
 		));	
 
 		

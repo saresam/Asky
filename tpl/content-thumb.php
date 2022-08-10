@@ -8,7 +8,7 @@
  */
 
 $i=0; while ( have_posts() ) : the_post(); $i++;
-$class = ($i%2 == 0) ? 'post-list-thumb-left' : ''; // 如果为偶数
+$class = ($i%2 == 0) ? 'post-list-thumb-left' : ''; 
 if(has_post_thumbnail()){
 	$large_image_url = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'large');
 	$post_img = $large_image_url[0];
