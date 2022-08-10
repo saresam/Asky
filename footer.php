@@ -122,25 +122,6 @@
 </div>
 <?php } ?>
 
-<!-- 波浪动画 -->
-<?php if (akina_option('waveloop') != '0'){ ?>
-<script>
-	$(function () {
-		//底部波浪动画
-		function waveloop1() {
-			$("#banner_bolang_bg_1").css({"left": "-236px"}).animate({"left": "-1233px"}, 25000, 'linear', waveloop1);
-		}
-		function waveloop2() {
-			$("#banner_bolang_bg_2").css({"left": "0px"}).animate({"left": "-1009px"}, 60000, 'linear', waveloop2);
-		}
-		//循环播放
-		if (screen && screen.width > 800) {
-		waveloop1();
-		waveloop2();
-		}
-	});
-</script>
-<?php } ?>
 
 
 <!-- 引入峰窝canvas 如果屏幕大于480的话 -->

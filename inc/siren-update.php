@@ -599,7 +599,7 @@ function siren_private_message_hook($comment_content , $comment){
     $current_commenter = wp_get_current_commenter();
     if ( $is_private ) $comment_content = '#私密# ' . $comment_content;
     if ( $current_commenter['comment_author_email'] == $email || $parent_email == $current_commenter['comment_author_email'] || current_user_can('delete_user') ) return $comment_content;
-    if ( $is_private ) return '该评论为私密评论';
+    if ( $is_private ) return '<div style="width: 35%;border-radius: 12px;background: linear-gradient(45deg,rgb(0 0 0 / 3%) 25%,rgb(0 0 0 / 8%) 25%,rgb(0 0 0 / 8%) 50%,rgb(0 0 0 / 3%) 50%,rgb(0 0 0 / 3%) 75%,rgb(0 0 0 / 8%) 75%);background-size: 20px 20px;margin-top: 10px;margin-bottom: 10px;"><p style="padding-bottom: 5px;padding-top: 5px;text-align: center;">该评论为私密评论</p></div>';
     return $comment_content;
 }
 add_filter('get_comment_text','siren_private_message_hook',10,2);

@@ -6,8 +6,19 @@ $bg_style = akina_option('focus_height') ? 'background-position: center center;b
 ?>
 <figure id="centerbg" class="centerbg" style="<?php echo $image_file.$bg_style ?>" title="<?php bloginfo('name');?>">
 <?php if (akina_option('waveloop') != '0'){ ?>
-     <div id="banner_bolang_bg_1"></div>
-     <div id="banner_bolang_bg_2"></div>
+	<div class="bg-waves">
+		<svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+			<defs>
+				<path id="gentle-wave" d="M -160 44 c 8 0 15 -10 22 -10 s 15 10 22 10 s 15 -10 22 -10 s 15 10 22 10 s 15 -10 22 -10 s 15 10 22 10 s 15 -10 22 -10 s 15 10 22 10 s 15 -10 22 -10 s 15 10 22 10 s 15 -10 22 -10 s 15 10 22 10 s 15 -10 22 -10 s 15 10 22 10 s 15 -10 22 -10 s 15 10 22 10 s 15 -10 22 -10 s 15 10 22 10 v 44 h -396 z">
+				</path>
+			</defs>
+			<g class="parallax">
+				<use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.4)"></use>
+				<use xlink:href="#gentle-wave" x="48" y="1" fill="rgba(255,255,255,0.7)"></use>
+				<use xlink:href="#gentle-wave" x="48" y="2" fill="rgba(255,255,255,0.9)"></use>
+			</g>
+		</svg>
+	</div>
 <?php } ?>
 	<?php if ( !akina_option('focus_infos') ){ ?>
 	<div class="focusinfo">

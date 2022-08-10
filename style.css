@@ -3822,7 +3822,8 @@ li.feature-2 {
 }
 
 .headertop.filter-grid::before {
-    background-image: url(images/grid.png);
+    background-size: 3px 3px,3px 3px,2px 2px,2px 2px;
+    background-image: linear-gradient(rgb(0 0 0 / 20%) 1px,transparent 0);
 }
 
 .headertop-bar::after {
@@ -6306,54 +6307,53 @@ i.iconfont.icon-people{
     }
 }
 
-#banner_bolang_bg_1 {
-    width: auto;
-    height: 85px;
-    background: url("images/wave1.png") repeat-x;
-    _filter: alpha(opacity=80);
-    position: absolute;
-    bottom: 0px;
-    width: 400%;
-    left: -236px;
-    z-index: 997;
+/*--------------------------------------------------------------
+# 波浪
+--------------------------------------------------------------*/
+.bg-waves{
+	position:absolute;
+	bottom:0px;
+	z-index:97;
+	width: 100%
 }
-
-@media (max-width: 860px) {
-   #banner_bolang_bg_1 {
-    width: auto;
-    height: 60px;
-    background: url("images/wave1.png") repeat-x;
-    _filter: alpha(opacity=80);
-    position: absolute;
-    bottom: 0px;
-    width: 400%;
-    left: -236px;
-    z-index: 997;
+.waves {
+	position:relative;
+	width:100%;
+	height:15vh;
+	margin-bottom:-7px;
+	min-height:100px;
+	max-height:150px;
+}
+.parallax >use {
+	animation:move-forever 25s cubic-bezier(.55,.5,.45,.5)     infinite;
+}
+.parallax >use:nth-child(1) {
+	animation-delay:-3s;
+	animation-duration:14s;
+}
+.parallax >use:nth-child(2) {
+	animation-delay:-4s;
+	animation-duration:19s;
+}
+.parallax >use:nth-child(3) {
+	animation-delay:-5s;
+	animation-duration:25s;
+}
+@keyframes move-forever {
+	0% {
+	transform:translate3d(-90px,0,0);
+}
+100% {
+	transform:translate3d(85px,0,0);
 }
 }
-
-#banner_bolang_bg_2 {
-    width: auto;
-    height: 100px;
-    background: url("images/wave2.png") repeat-x;
-    _filter: alpha(opacity=80);
-    position: absolute;
-    bottom: 0px;
-    width: 400%;
-    left: 0px;
-    z-index: 996;
+@media (max-width:860px) {
+	.bg-waves{
+	width: 150%
 }
-@media (max-width: 860px) {
-   #banner_bolang_bg_2 {
-    width: auto;
-    height: 70px;
-    background: url("images/wave2.png") repeat-x;
-    _filter: alpha(opacity=80);
-    position: absolute;
-    bottom: 0px;
-    width: 400%;
-    left: 0px;
-    z-index: 996;
+	.waves {
+	height:70px;
+	min-height:70px;
 }
 }
 
