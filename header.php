@@ -23,6 +23,21 @@
 			  if ( $site_description && ( is_home() || is_front_page() ) ) echo " - $site_description";if ( $paged >= 2 || $page >= 2 ) echo ' - ' . sprintf( __( '第 %s 页'), max( $paged, $page ) );?>
 	</title>
 
+	<?php if(akina_option('web_title') !='0') { 
+		$onblur_text= akina_option('onblur');
+		$onfocus_text = akina_option('onfocus');
+		?>
+	<script>
+		var title = document.title;
+			window.onblur = function () {
+				document.title = '<?php echo $onblur_text ;?>';
+			};
+			window.onfocus = function () {
+				document.title = '<?php echo $onfocus_text ;?>';
+				setTimeout( "document.title=title", 3000 );
+			}
+	</script>
+	<?php }?>
 
 	<?php if ( akina_option( 'progress_type' ) == 'loadprogress' ) { ?>
 	<script src="<?php bloginfo('template_url'); ?>/js/nprogress.js"></script>
