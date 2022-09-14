@@ -185,7 +185,7 @@ function optionsframework_options() {
 		));
 
 	$options[] = array(
-		'name' => __('首页文章特色图（仅对上个选项中的图文风格生效）', 'akina'),
+		'name' => __('首页文章特色图', 'akina'),
 		'id' => 'list_type',
 		'std' => "round",
 		'type' => "radio",
@@ -383,8 +383,8 @@ function optionsframework_options() {
 		'type' => 'checkbox');	
 	
 	$options[] = array(
-		'name' => __('页面顶部显示加载进度或浏览进度', 'akina'),
-		'desc' => __('默认不需要显示', 'akina'),
+		'name' => __('进度条', 'akina'),
+		'desc' => __('页面顶部显示加载进度或浏览进度，默认不需要显示', 'akina'),
 		'id' => 'progress_type',
 		'std' => "progress_no",
 		'type' => "radio",
@@ -696,15 +696,6 @@ function optionsframework_options() {
 		'id' => 'mail_user_name',
 		'std' => 'poi',
 		'type' => 'text');
-
-	
-
-	$options[] = array(
-		'name' => __('开启多说插件支持', 'options_framework_theme'),
-		'desc' => __('如果使用多说插件，请勾选此项', 'options_framework_theme'),
-		'id' => 'general_disqus_plugin_support',
-		'std' => '0',
-		'type' => 'checkbox');
 
 	$options[] = array(
 		'name' => __('开启Prism代码高亮支持', 'options_framework_theme'),

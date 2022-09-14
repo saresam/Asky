@@ -10,15 +10,7 @@
  */
 
 ?>
-	</div><!-- #content引入评论模板 -->
-	<?php 
-		if(akina_option('general_disqus_plugin_support')){
-			get_template_part('layouts/duoshuo');
-		}else{
-			comments_template('', true); 
-		}
-	?>
-	</div><!-- #page Pjax container end-->
+<!-- #page Pjax container end-->
 
 	<div class="openNav">
 		<div class="iconflat">	 
