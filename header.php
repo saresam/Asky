@@ -23,15 +23,18 @@
 			  if ( $site_description && ( is_home() || is_front_page() ) ) echo " - $site_description";if ( $paged >= 2 || $page >= 2 ) echo ' - ' . sprintf( __( '第 %s 页'), max( $paged, $page ) );?>
 	</title>
 
+	<!--网站标题自动判断	设置/*-->
 	<?php if(akina_option('web_title') !='0') { 
 		$onblur_text= akina_option('onblur');
 		$onfocus_text = akina_option('onfocus');
 		?>
 	<script>
 		var title = document.title;
+			// window 失去焦点 
 			window.onblur = function () {
 				document.title = '<?php echo $onblur_text ;?>';
 			};
+			// window 获得焦点 
 			window.onfocus = function () {
 				document.title = '<?php echo $onfocus_text ;?>';
 				setTimeout( "document.title=title", 3000 );

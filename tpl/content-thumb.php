@@ -24,7 +24,7 @@ $the_cat = get_the_category();
 	<article class="post post-list-thumb" itemscope="" itemtype="http://schema.org/BlogPosting">
 	<a>
 		<a href="<?php the_permalink(); ?>">
-			    <img src="<?php echo akina_option('focus_logo', ''); ?>" style="float: left;border-radius: 15px;height: 50px;width: 50px;">
+			<img class="post-thumb-focus" src="<?php echo akina_option('focus_logo', ''); ?>" >
 	    	<a href="<?php the_permalink(); ?>" style="float: left;">
 		    	<h4 style="margin-left: 10px;margin-top: 0px;margin-bottom: 0px;"><?php bloginfo('name');?>
 		    		<img src="https://cbu01.alicdn.com/img/ibank/2020/928/794/20520497829_1413442486.jpg" style="margin-left: 5px;">
@@ -36,7 +36,7 @@ $the_cat = get_the_category();
 		<a href="<?php the_permalink(); ?>" class="post-title" style="width: 92%;float: right;"><h3><?php the_title();?></h3></a>
 		<?php if( !empty( get_post_thumb( ) ) ) : ?>
 			<div class="post-thumb">
-				<a href="<?php the_permalink(); ?>" title="<?php the_title();?>"><img src="<?php echo $post_img; ?>" " alt="<?php the_title();?>"></a>
+				<a href="<?php the_permalink(); ?>" title="<?php the_title();?>"><img src="<?php echo $post_img; ?>" alt="<?php the_title();?>"></a>
 			</div><!-- thumbnail-->
 		<?php endif ?>
 		<div class="post-content-wrap">

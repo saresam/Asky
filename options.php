@@ -159,7 +159,7 @@ function optionsframework_options() {
 
 	$options[] = array(
 		'name' => __('头部装饰图', 'options_framework_theme'),
-		'desc' => __('默认开启，勾选关闭。显示在文章页面，独立页面以及分类页（需要设置特色图片才会显示）', 'options_framework_theme'),
+		'desc' => __('默认开启，勾选关闭。显示在文章页面，独立页面以及分类页（顺序为 特色图 -> 文章第一张图 -> 默认图）', 'options_framework_theme'),
 		'id' => 'patternimg',
 		'std' => '0',
 		'type' => 'checkbox');
@@ -300,6 +300,7 @@ function optionsframework_options() {
 		'name' => __('个人头像', 'options_framework_theme'),
 		'desc' => __('可以直接填写头像图片URL地址，最佳高度尺寸130px。', 'options_framework_theme'),
 		'id' => 'focus_logo',
+		'std' => $imagepath.'avatar.jpg',
 		'type' => 'upload');
 	
 	$options[] = array(
@@ -602,7 +603,7 @@ function optionsframework_options() {
 		'name' => __('聚焦图一', 'options_framework_theme'),
 		'desc' => __('尺寸257px*160px', 'options_framework_theme'),
 		'id' => 'feature1_img',
-		'std' => $imagepath.'/temp.jpg',
+		'std' => $imagepath.'temp.jpg',
 		'type' => 'upload');
 
 	$options[] = array(
@@ -623,7 +624,7 @@ function optionsframework_options() {
 		'name' => __('聚焦图二', 'options_framework_theme'),
 		'desc' => __('尺寸257px*160px', 'options_framework_theme'),
 		'id' => 'feature2_img',
-		'std' => $imagepath.'/temp.jpg',
+		'std' => $imagepath.'temp.jpg',
 		'type' => 'upload');
 
 	$options[] = array(
@@ -644,7 +645,7 @@ function optionsframework_options() {
 		'name' => __('聚焦图三', 'options_framework_theme'),
 		'desc' => __('尺寸257px*160px', 'options_framework_theme'),
 		'id' => 'feature3_img',
-		'std' => $imagepath.'/temp.jpg',
+		'std' => $imagepath.'temp.jpg',
 		'type' => 'upload');
 
 	$options[] = array(
@@ -770,7 +771,14 @@ function optionsframework_options() {
 		'id' => 'canvas_nest',
 		'std' => '0',
 		'type' => 'checkbox');
-	
+
+	$options[] = array(
+		'name' => __('开启底部跳动小鱼动效', 'options_framework_theme'),
+		'desc' => __('默认关闭，勾选开启', 'options_framework_theme'),
+		'id' => 'flying_fish',
+		'std' => '0',
+		'type' => 'checkbox');
+
 	$options[] = array(
 		'name' => __('网站标题自动判断', 'options_framework_theme'),
 		'desc' => __('比较好玩……', 'options_framework_theme'),

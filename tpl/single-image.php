@@ -10,7 +10,7 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<?php if(akina_option('patternimg') || !get_post_thumbnail_id(get_the_ID())) { ?>
+	<?php if(akina_option('patternimg')) { ?>
 	<div class="Extendfull">
   	<?php the_post_thumbnail('full'); ?>
   	<header class="entry-header">

@@ -290,45 +290,58 @@ function the_headPattern(){
   $t = ''; // 标题
   $full_image_url = wp_get_attachment_image_src(get_post_thumbnail_id(get_the_ID()), 'full');
   if(is_single()){
-	  if(!empty($full_image_url[0])){
-	    $full_image_url = $full_image_url[0];
-	  }else{
-		  $full_image_url= '';
-	  }
+	if(!empty($full_image_url[0])){
+		$full_image_url = $full_image_url[0];
+	}else{
+	    if ( !empty( get_post_thumb() ) ) {
+			$full_image_url= get_post_thumb( 'false' );
+	    } else {
+			$full_image_url = 'https://cbu01.alicdn.com/img/ibank/O1CN0129GY3o1PNjANiI2Ks_!!2207679801829-0-cib.jpg';
+        }
+	}
+	  
     if (have_posts()) : while (have_posts()) : the_post();
     $center = 'single-center';
     $header = 'single-header';
     $ava = get_avatar(get_the_author_meta('email'), 35 ,get_avatar_profile_url() );
-		//akina_option('focus_logo', '') ? akina_option('focus_logo', '') : get_avatar_url(get_the_author_meta('user_email'));
     $t .= the_title( '<h1 class="entry-title">', '</h1>', false);
 	$t .= '<span  class="toppic-line"></span>';
     $t .= '<p class="entry-census"><span><a href="'. esc_url(get_author_posts_url(get_the_author_meta('ID'),get_the_author_meta( 'user_nicename' ))) .'">'. $ava .'</a></span><span><a href="'. esc_url(get_author_posts_url(get_the_author_meta('ID'),get_the_author_meta( 'user_nicename' ))) .'">'. get_the_author() .'</a></span><span class="bull">·</span>'. poi_time_since(get_post_time('U', true),false,true) .'<span class="bull">·</span>'. get_post_views(get_the_ID()) .' 次阅读</p>';
     endwhile; endif;
+	
   }elseif(is_page()){
     if(!empty($full_image_url[0])){
 	    $full_image_url = $full_image_url[0];
 	  }else{
-		  $full_image_url= '';
+	      if ( !empty( get_post_thumb() ) ) {
+		    $full_image_url= get_post_thumb( 'false' );
+	      } else {
+		    $full_image_url = 'https://cbu01.alicdn.com/img/ibank/O1CN0129GY3o1PNjANiI2Ks_!!2207679801829-0-cib.jpg';
+          }
 	  }
     $t .= the_title( '<h1 class="entry-title">', '</h1>', false);
+	
   }elseif(is_archive()){
     $full_image_url = z_taxonomy_image_url();
     $des = category_description() ? category_description() : ''; // 描述
     $t .= '<h1 class="cat-title">'.single_cat_title('', false).'</h1>';
     $t .= ' <span class="cat-des">'.$des.'</span>';
+	
   }elseif(is_search()){
     $full_image_url = get_random_bg_url();
     $t .= '<h1 class="entry-title search-title"> 关于“ '.get_search_query().' ”的搜索结果</h1>';
   }
-  if(akina_option('patternimg')) $full_image_url = false;
-  if(!is_home() && $full_image_url) : ?>
-  <div class="pattern-center <?php if(is_single()){echo $center;} ?>">
-    <div class="pattern-attachment-img" style="background-image: url(<?php echo $full_image_url; ?>)" title="<?php the_title(); ?>"></div>
-    <header class="pattern-header <?php if(is_single()){echo $header;} ?>"><?php echo $t; ?></header>
-  </div>
-  <?php else :
-    echo '<div class="blank"></div>';
-  endif;
+  
+  if(akina_option('patternimg')) $full_image_url = false; {
+    if(!is_home() && $full_image_url) { ?>
+        <div class="pattern-center <?php if(is_single()){echo $center;} ?>">
+        <div class="pattern-attachment-img" style="background-image: url(<?php echo $full_image_url; ?>)" title="<?php the_title(); ?>"></div>
+        <header class="pattern-header <?php if(is_single()){echo $header;} ?>"><?php echo $t; ?></header>
+        </div>
+  <?php }else{ ?>
+    <div class="blank"></div>
+  <?php }
+  }
 }
 
 
