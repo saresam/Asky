@@ -2,7 +2,7 @@
 WordPress Theme
 一款WordPress主题，名字Asky，原作者：keith ，支持原作者。
 
-我只是稍作修改，修改后的演示，请点击：https://xinwei.life
+我只是稍作修改，修改后的演示，请点击：https://peanoo.com
 
 # 由来介绍
 首先，感谢 Fuzzz 创作出 Akina 主题
@@ -30,4 +30,4 @@ WordPress Theme
 
 还有什么呢，想不起来了，可能是一些微不足道的小东西吧
 
-修改后的演示站：https://xinwei.life
+修改后的演示站：https://peanoo.com
