@@ -365,19 +365,21 @@ function restyle_text($number) {
 // set post view
 function set_post_views() {
     global $post;
-    $post_id = intval($post->ID);
-    $count_key = 'views';
-    $views = get_post_custom($post_id);
-    if( !empty($views['views'][0]) ) {
-        $views = intval($views['views'][0]);
-        if(is_single() || is_page()) {
-            if(!update_post_meta($post_id, 'views', ($views + 1))) {
-                add_post_meta($post_id, 'views', 1, true);
-            }
-        }
-    }else{
-        add_post_meta($post_id, 'views', 1, true);
-    }
+    if ( !empty($post)) {
+		$post_id = intval($post->ID);
+		$count_key = 'views';
+		$views = get_post_custom($post_id);
+		if( !empty($views['views'][0]) ) {
+			$views = intval($views['views'][0]);
+			if(is_single() || is_page()) {
+				if(!update_post_meta($post_id, 'views', ($views + 1))) {
+					add_post_meta($post_id, 'views', 1, true);
+				}
+			}
+		}else{
+			add_post_meta($post_id, 'views', 1, true);
+		}
+	}
 }
 add_action('get_header', 'set_post_views');
 

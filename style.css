@@ -3753,6 +3753,7 @@ li.feature-2 {
     width: 100%;
     margin-top: 30px;
     background: #FBFBFB;
+	border-radius: 8px;
 }
 
 .notice i {

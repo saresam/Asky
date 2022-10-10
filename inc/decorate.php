@@ -37,6 +37,8 @@ if ( akina_option('list_type') == 'square') { ?>
 img{ border-radius: 0px; !important; }
 .search-form input{ border-radius: 0px; !important; }
 .notification{ border-radius: 0px; !important; }
+.comment .profile img{ border-radius: 4px; !important; }
+.notice{ border-radius: 0px; !important; }
 <?php } // liststyle ?>
 <?php // comments
 if ( akina_option('toggle-menu') == 'no') { ?>

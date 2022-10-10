@@ -10,6 +10,9 @@
  */
 
 ?>
+	</div>
+	<?php comments_template('', true); ?>
+	</div>
 <!-- #page Pjax container end-->
 
 	<div class="openNav">
@@ -32,6 +35,7 @@
 		</div>
 		<?php wp_nav_menu( array( 'depth' => 2, 'theme_location' => 'primary', 'container' => false ) ); ?>
 	</div><!-- m-nav-center end -->
+	<a href="#" class="cd-top"></a>
 	<form class="js-search search-form search-form--modal" method="get" action="<?php echo home_url(); ?>" role="search">
 		<div class="search-form__inner">
 			<div>
