@@ -917,16 +917,12 @@ function get_post_thumb( $return_src = 'true' ){
 //    return  $content;  
 //}  
 
-add_filter( 'get_avatar' , 'inlojv_custom_avatar' , 10 , 5 );
-function inlojv_custom_avatar( $avatar, $id_or_email, $size, $default, $alt) {
-		global $comment,$current_user;
-		$current_email =  is_int($id_or_email) ? get_user_by( 'ID', $id_or_email )->user_email : $id_or_email;
-		$email = !empty($comment->comment_author_email) ? $comment->comment_author_email : $current_email ;
-		$email_hash = md5(strtolower(trim($email)));
-		$src = 'https://pic.imgdb.cn/api/avatar';
-		$avatar = "<img alt='{$alt}' src='https://sdn.geekzu.org/avatar/{$email_hash}?d=404' onerror='javascript:this.src=\"{$src}\";this.onerror=null;' class='avatar avatar-{$size} photo' height='{$size}' width='{$size}' />";
+//替换头像为loli镜像
+function get_loli_avatar($avatar) {
+    $avatar = preg_replace('/.*\/avatar\/(.*)\?s=([\d]+)&.*/','<img src="https://gravatar.loli.net/avatar/$1?s=$2" class="avatar avatar-$2" height="$2" width="$2">',$avatar);
     return $avatar;
 }
+add_filter('get_avatar', 'get_loli_avatar');
 
 //function article_index($content) {
 //$matches = array();
