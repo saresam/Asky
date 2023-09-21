@@ -479,7 +479,7 @@ function get_link_items(){
  */
 function gravatar_cn( $url ){ 
 	$gravatar_url = array('www.gravatar.com','secure.gravatar.com','cn.gravatar.com','0.gravatar.com','1.gravatar.com','2.gravatar.com');
-	return str_replace( $gravatar_url, 'https://sdn.geekzu.org/avatar/', $url );
+	return str_replace( $gravatar_url, 'gravatar.loli.net', $url );
 }
 add_filter( 'get_avatar_url', 'gravatar_cn', 4 );
 
@@ -917,12 +917,6 @@ function get_post_thumb( $return_src = 'true' ){
 //    return  $content;  
 //}  
 
-//替换头像为loli镜像
-function get_loli_avatar($avatar) {
-    $avatar = preg_replace('/.*\/avatar\/(.*)\?s=([\d]+)&.*/','<img src="https://gravatar.loli.net/avatar/$1?s=$2" class="avatar avatar-$2" height="$2" width="$2">',$avatar);
-    return $avatar;
-}
-add_filter('get_avatar', 'get_loli_avatar');
 
 //function article_index($content) {
 //$matches = array();
