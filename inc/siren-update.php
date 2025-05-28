@@ -11,14 +11,14 @@ remove_filter('term_description', 'wp_kses_data');
 show_admin_bar(false);
 
 
-
-
-
 /*
  * 视频
  */
 function bgvideo(){
-  if(!akina_option('focus_amv') || akina_option('focus_height')) $dis = 'display:none;';
+  $dis = '';
+  if(!akina_option('focus_amv') || akina_option('focus_height')) {
+    $dis = 'display:none;';
+  }
   $html = '<div id="video-container" style="'.$dis.'">'; 
   $html .= '<video id="bgvideo" class="video" video-name="" src="" width="auto" preload="auto"></video>';
   $html .= '<div id="video-btn" class="loadvideo videolive" ></div>';
