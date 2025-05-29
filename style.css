@@ -3947,8 +3947,20 @@ li.feature-2 {
     border-radius: 50px;
 }
 
+@keyframes headerp {
+    0% {
+        letter-spacing: -0.875rem
+    }
+
+    100% {
+        letter-spacing: 0.125rem
+    }
+}
+
 .header-info p {
-    margin: 0
+    margin: 0;
+    letter-spacing: -0.875rem;
+    animation: headerp 1s forwards;
 }
 
 .top-social {

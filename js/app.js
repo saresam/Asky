@@ -225,12 +225,10 @@ var home = location.href,
     splay: function(){ // 播放
         $('#video-btn').addClass('video-pause').removeClass('video-play').show();
         $('.video-stu').css({"bottom":"-100px"});
-        $('.focusinfo').css({"top":"-999px"});
         s.play();
     },
     spause: function(){ // 暂停
         $('#video-btn').addClass('video-play').removeClass('video-pause');
-        $('.focusinfo').css({"top":"49.3%"});
         s.pause();
     },
     liveplay: function(){ // 自动续播 - 播放
@@ -281,7 +279,6 @@ var home = location.href,
                 _btn.addClass('loadvideo').removeClass('video-pause');
                 _btn.removeClass('videolive');
                 _btn.removeClass('haslive');
-                $('.focusinfo').css({"top":"49.3%"});
             }
         });
         $('#video-add').on('click', function(){
