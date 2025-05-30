@@ -39,6 +39,10 @@ img{ border-radius: 0px; !important; }
 .notification{ border-radius: 0px; !important; }
 .comment .profile img{ border-radius: 4px; !important; }
 .notice{ border-radius: 0px; !important; }
+.comment-respond input[type='submit']{border-radius: 0px; !important;}
+.comment-respond #cancel-comment-reply-link{border-radius: 0px; !important;}
+.post-share p{border-radius: 0px; !important;}
+.comment .profile img{border-radius: 0px; !important;}
 <?php } // liststyle ?>
 <?php // comments
 if ( akina_option('toggle-menu') == 'no') { ?>

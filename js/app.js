@@ -14,6 +14,22 @@ const getEl = (()=>{
         return cache.get(id);
     };
 })();
+const SafeStorage = {
+    get(key) {
+        try {
+            return localStorage.getItem(key);
+        } catch (e) {
+            return null;
+        }
+    },
+    set(key, value) {
+        try {
+            localStorage.setItem(key, value);
+        } catch (e) {
+            return null;
+        }
+    }
+};
 // 防抖函数
 const debounce = (fn,delay)=>{
     let timer;
@@ -724,7 +740,7 @@ const Siren = {
         const loading = document.getElementById("loading");
         if (loading) {
             loading.addEventListener('click', function() {
-                console.log("%c 过渡动画 %c", "background:#9a9da2; color:#ffffff; border-radius:4px;", "", "http://skyarea.cn");
+                console.log("%c 过渡动画 %c", "background:#9a9da2; color:#ffffff; border-radius:4px;", "", "https://peanoo.com");
                 loading.style.display = 'none';
             });
         }
@@ -782,7 +798,7 @@ const Siren = {
     },
 
     // 合并返回顶部-导航栏显隐-滚动监听器
-    GTNH() {
+    GTNH: function() {
         // 返回顶部相关元素
         const rocket = document.querySelector('.rocket');
         const wrapper = document.querySelector('.rocket-wrapper');
@@ -857,7 +873,7 @@ const Siren = {
         });
     },
     // Ajax评论
-    XCS() {
+    XCS: function() {
         const cancel = getEl('cancel-comment-reply-link');
         if (!cancel) return;
         const cancelText = cancel.textContent;
@@ -1074,7 +1090,60 @@ const Siren = {
             }
         });
     },
-
+    IA: function() {
+        if (typeof POWERMODE !== 'function') return;
+        document.addEventListener('focusin', e=>{
+            if (e.target.matches('input, textarea, [contenteditable]')) {
+                e.target.addEventListener('input', POWERMODE);
+                e.target.addEventListener('focusout', function cleanup() {
+                    this.removeEventListener('input', POWERMODE);
+                    this.removeEventListener('focusout', cleanup)
+                })
+            }
+        })
+    },
+    // == 点赞功能模块 ==
+    ZAN: function() {
+        // 初始化点赞状态
+        document.querySelectorAll('.specsZan').forEach(btn=>{
+            const id = btn.dataset.id;
+            if (!id) return;
+            const key = `${location.pathname}_specs_zan_${id}`;
+            if (SafeStorage.get(key)) {
+                btn.querySelector('i')?.classList.replace('icon-heart_line', 'icon-heart');
+                btn.classList.add('permanent-done');
+            }
+        });
+        document.addEventListener('click', async e => {
+            const btn = e.target.closest('.specsZan');
+            if (!btn) return;
+            const id = btn.dataset.id;
+            const key = `${location.pathname}_specs_zan_${id}`;
+            if (!id || btn.classList.contains('permanent-done')) return;
+            // UI 更新
+            const icon = btn.querySelector('i');
+            const countEl = btn.querySelector('.count');
+            btn.classList.add('permanent-done');
+            if (icon)
+                icon.classList.replace('icon-heart_line', 'icon-heart');
+            if (countEl) {
+                const count = parseInt(countEl.textContent || '0', 10);
+                countEl.textContent = count + 1;
+            }
+            SafeStorage.set(key, 'true');
+            btn.style.pointerEvents = 'none';
+			// 发送请求
+            try {
+                await fetch(Poi.ajaxurl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: `action=specs_zan&um_id=${encodeURIComponent(id)}&um_action=ding`
+                });
+            } catch (e) {}
+        }, { passive: true });
+    },
     SFS: function() {
         window.addEventListener('scroll', function() {
             const htmlHeight = document.body.scrollHeight || document.documentElement.scrollHeight;
@@ -1095,41 +1164,12 @@ document.addEventListener('DOMContentLoaded', function() {
     Siren.GTNH();
     Siren.XLS();
     Siren.XCS();
+    Siren.IA();
+    Siren.ZAN();
     Siren.SFS();
     Siren.LV();
 });
 
-// 点赞
-function postLike(element) {
-    if (element.classList.contains('done')) {
-        return false;
-    } else {
-        element.classList.add('done');
-        const id = element.dataset.id;
-        const action = element.dataset.action;
-        const rateHolder = element.querySelector('.count');
-        const formData = new FormData();
-        formData.append('action', 'specs_zan');
-        formData.append('um_id', id);
-        formData.append('um_action', action);
-
-        fetch(Poi.ajaxurl, {
-            method: 'POST',
-            body: formData
-        })
-       .then(response => response.text())
-       .then(data => {
-            rateHolder.innerHTML = data;
-        });
-        return false;
-    }
-}
-
-document.addEventListener("click", function(event) {
-    if (event.target.classList.contains('specsZan')) {
-        postLike(event.target);
-    }
-});
 
 /*
  * File skip-link-focus-fix.js.

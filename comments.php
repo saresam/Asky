@@ -103,5 +103,23 @@
   </div>
 	</div>
 	</section>
-
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const authorInput = document.getElementById('author');
+    const welcomeElement = document.querySelector('.author-updown');
+    if (!authorInput || !welcomeElement) return;
+    const originalText = welcomeElement.textContent;
+    const originalUsername = originalText.split('欢迎回来 ,  ')[1] || '';
+    const originalHTML = welcomeElement.innerHTML;
+    function updateWelcomeText() {
+        const inputValue = authorInput.value.trim() || originalUsername;
+        welcomeElement.innerHTML = originalHTML.replace(originalUsername, inputValue);
+    }
+    updateWelcomeText();
+    authorInput.addEventListener('input', updateWelcomeText);
+    authorInput.addEventListener('paste', function() {
+        setTimeout(updateWelcomeText, 10);
+    });
+});
+</script>
 <?php endif; ?>

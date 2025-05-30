@@ -472,17 +472,21 @@ function get_link_items(){
   return $result;
 }
 
-
-
-/*
- * Gravatar头像使用中国服务器
+/**
+ * 替换 Gravatar 头像为 WeAvatar 头像
  */
-function gravatar_cn( $url ){ 
-	$gravatar_url = array('www.gravatar.com','secure.gravatar.com','cn.gravatar.com','0.gravatar.com','1.gravatar.com','2.gravatar.com');
-	return str_replace( $gravatar_url, 'gravatar.loli.net', $url );
+if ( ! function_exists( 'get_weavatar_url' ) ) {
+    function get_weavatar_url( $url ) {
+        $sources = array('www.gravatar.com','0.gravatar.com','1.gravatar.com','2.gravatar.com','secure.gravatar.com','cn.gravatar.com','gravatar.com');
+        return str_replace( $sources, 'weavatar.com', $url );
+    }
+    add_filter( 'um_user_avatar_url_filter', 'get_weavatar_url', 1 );
+    add_filter( 'bp_gravatar_url', 'get_weavatar_url', 1 );
+    add_filter( 'get_avatar_url', 'get_weavatar_url', 1 );
+    add_filter( 'um_user_avatar_url_filter', 'get_weavatar_url', PHP_INT_MAX );
+    add_filter( 'bp_gravatar_url', 'get_weavatar_url', PHP_INT_MAX );
+    add_filter( 'get_avatar_url', 'get_weavatar_url', PHP_INT_MAX );
 }
-add_filter( 'get_avatar_url', 'gravatar_cn', 4 );
-
 
 /*
  * 阻止站内文章互相Pingback 

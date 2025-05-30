@@ -18,7 +18,7 @@
 		<a href="<?php the_permalink();?>"><div class="overlay"><i class="iconfont icon-file"></i><div class="random_thumbnal" style="background-position: <?php echo rand(0,9)*11?>% 0"></a>
 		<?php } ?>
 	</div>	
-	<h1 class="entry-title"><a href="<?php the_permalink();?>"><?php the_title();?></a></h1>
+	<h1 class="entry-title"><a href="<?php the_permalink();?>"><?php if (get_the_title()) {the_title();} else {echo '&nbsp;';}?></a></h1>
 	<div class="p-time">
 	 <?php if(is_sticky()) : ?>
 			<i class="iconfont hotpost icon-fire"></i>

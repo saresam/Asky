@@ -20,7 +20,7 @@
 		  </a>
 			<?php } ?>
 		</div>	
-		<h1 class="entry-title"><a href="<?php the_permalink();?>"><?php the_title();?></a></h1>
+		<h1 class="entry-title"><a href="<?php the_permalink();?>"><?php if (get_the_title()) {the_title();} else {echo '&nbsp;';}?></a></h1>
 		<div class="p-time">
 		<?php if(is_sticky()) : ?>
 			<i class="iconfont hotpost icon-fire"></i>
