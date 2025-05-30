@@ -29,7 +29,7 @@
 	<?php the_reward(); ?>
 
 	<footer class="post-footer">
-	<div class="post-lincenses"><a href="">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+	<div class="post-lincenses site-info"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans" target="_blank" rel="noopener noreferrer">知识共享（CC）协议：署名—非商业性使用—相同方式共享 4.0 协议国际版</a></div>
 	<div class="post-tags">
 		<?php if ( has_tag() ) { echo '<i class="iconfont icon-tags"></i> '; the_tags('', ' ', ' ');}?>
 	</div>

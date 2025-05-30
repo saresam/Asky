@@ -22,17 +22,19 @@ if(has_post_thumbnail()){
 $the_cat = get_the_category();
 ?>
 	<article class="post post-list-thumb" itemscope="" itemtype="http://schema.org/BlogPosting">
-	<a>
+	<div class="post-container">
 		<a href="<?php the_permalink(); ?>">
 			<img class="post-thumb-focus" src="<?php echo akina_option('focus_logo', ''); ?>" >
-	    	<a href="<?php the_permalink(); ?>" style="float: left;">
-		    	<h4 style="margin-left: 10px;margin-top: 0px;margin-bottom: 0px;"><?php bloginfo('name');?>
-		    		<img src="https://cbu01.alicdn.com/img/ibank/2020/928/794/20520497829_1413442486.jpg" style="margin-left: 5px;">
-		    	</h4>
-		    	<span class="post-date" style="padding-left: 10px;"><i class="iconfont icon-clock"></i><?php echo poi_time_since(strtotime($post->post_date_gmt)); ?><?php if(is_sticky()) : ?><i class="iconfont hotpost icon-fire"></i><?php endif ?><?php esc_html_e(' 来自 博客 ', 'akina'); ?><?php bloginfo('url');?>
-		    	</span>
-	    	</a></a>
-	</a>
+		</a>
+		
+	    <a href="<?php the_permalink(); ?>" class="post-list-info">
+			<h4><?php bloginfo('name');?>
+				<img src="https://cbu01.alicdn.com/img/ibank/2020/928/794/20520497829_1413442486.jpg" style="margin-left:5px;border-radius:0">
+			</h4>
+			<span class="post-date post-date-info"><i class="iconfont icon-clock"></i><?php echo poi_time_since(strtotime($post->post_date_gmt)); ?><?php if(is_sticky()) : ?><i class="iconfont hotpost icon-fire"></i><?php endif ?><?php esc_html_e(' 来自 博客 ', 'akina'); ?><?php bloginfo('url');?>
+			</span>
+	    </a>
+	</div>
 		<a href="<?php the_permalink(); ?>" class="post-title" style="width: 92%;float: right;"><h3><?php the_title();?></h3></a>
 		<?php if( !empty( get_post_thumb( ) ) ) : ?>
 			<div class="post-thumb">

@@ -35,7 +35,11 @@
 		</div>
 		<?php wp_nav_menu( array( 'depth' => 2, 'theme_location' => 'primary', 'container' => false ) ); ?>
 	</div><!-- m-nav-center end -->
-	<a href="#" class="cd-top"></a>
+	<div class="rocket-wrapper">
+        <div class="earth"></div>
+        <div class="earth-shadow"></div>
+        <div class="rocket"></div>
+    </div>
 	<form class="js-search search-form search-form--modal" method="get" action="<?php echo home_url(); ?>" role="search">
 		<div class="search-form__inner">
 			<div>

@@ -286,14 +286,14 @@ function optionsframework_options() {
 		'name' => __('开启视频-视频地址', 'options_framework_theme'),
 		'desc' => __('视频的来源地址，该地址拼接下面的视频名，地址尾部不需要加斜杠', 'options_framework_theme'),
 		'id' => 'amv_url',
-		'std' => '',
+		'std' => 'https://cdn.moji.com/websrc/video',
 		'type' => 'text');
 
 	 $options[] = array(
 		'name' => __('开启视频-视频名称', 'options_framework_theme'),
 		'desc' => __('例如abc.mp4 ，只需要填写视频名称 abc 即可，多个用英文逗号隔开如 abc,efg ，无需在意顺序，因为加载是随机的抽取的 ', 'options_framework_theme'),
 		'id' => 'amv_title',
-		'std' => '',
+		'std' => 'spring20200311,summer20200618,autumn20190924,video621',
 		'type' => 'text');
 
 	 $options[] = array(
