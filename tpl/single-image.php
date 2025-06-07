@@ -16,7 +16,7 @@
   	<header class="entry-header">
 		<h1 class="entry-title"><?php the_title(); ?></h1>
 		<span  class="toppic-line"></span>
-		<p class="entry-census"><?php echo poi_time_since(strtotime($post->post_date_gmt)); ?>&nbsp;&nbsp;<?php echo get_post_views(get_the_ID()); ?> 次阅读</p>
+		<p class="entry-census"><i class="iconfont icon-clock"><?php echo poi_time_since(strtotime($post->post_date_gmt)); ?>&nbsp;&nbsp;<i class="iconfont icon-fire"></i><?php echo get_post_views(get_the_ID()); ?> 次阅读</p>
 		<hr>
 	</header>
 	</div>

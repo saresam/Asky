@@ -57,7 +57,7 @@
 	<?php else :?>	
 	
 	
-	<div class="author-updown"><?php printf(__('欢迎回来 ,  %s '), $comment_author); ?></div>	
+	<div class="author-updown"><?php printf(__('欢迎回来， %s '), $comment_author); ?></div>	
 	<?php endif; ?>
 	<?php if ( ! $user_ID ): ?>
 	<div id="comment-author-info">
@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const welcomeElement = document.querySelector('.author-updown');
     if (!authorInput || !welcomeElement) return;
     const originalText = welcomeElement.textContent;
-    const originalUsername = originalText.split('欢迎回来 ,  ')[1] || '';
+    const originalUsername = originalText.split('欢迎回来， ')[1] || '';
     const originalHTML = welcomeElement.innerHTML;
     function updateWelcomeText() {
         const inputValue = authorInput.value.trim() || originalUsername;
