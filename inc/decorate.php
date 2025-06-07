@@ -43,6 +43,12 @@ img{ border-radius: 0px; !important; }
 .comment-respond #cancel-comment-reply-link{border-radius: 0px; !important;}
 .post-share p{border-radius: 0px; !important;}
 .comment .profile img{border-radius: 0px; !important;}
+h1.page-title{border-radius: 0px; !important;}
+.sorry-inner{border-radius: 0px; !important;}
+.s-search input{border-radius: 0px; !important;}
+.author-profile .profile img{border-radius: 0px; !important;}
+.reward-row li img{border-radius: 0px; !important;}
+.single-reward .reward-row{border-radius: 0px; !important;}
 <?php } // liststyle ?>
 <?php // comments
 if ( akina_option('toggle-menu') == 'no') { ?>
