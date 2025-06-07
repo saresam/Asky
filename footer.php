@@ -71,7 +71,7 @@
 			<?php 
 			$statistics_link = akina_option('site_statistics_link') ? '<a href="'.akina_option('site_statistics_link').'" target="_blank" rel="nofollow">Statistics</a>' : '';
 			$site_map_link = akina_option('site_map_link') ? '<a href="'.akina_option('site_map_link').'" target="_blank" rel="nofollow">Sitemap</a>' : '';
-			printf('<span>Copyright © 2017 . All rights reserved. | </sapn>'. esc_html__( '%1$s &nbsp; %2$s &nbsp; %3$s &nbsp; %4$s', 'akina' ),  $site_map_link, $statistics_link,'<a href="https://github.com/saresam/Asky" rel="designer" target="_blank" rel="nofollow">Theme</a>', '<a href="https://wordpress.org/" target="_blank" rel="nofollow"> | Powered by WordPress</a>'); 
+			printf('<span>Copyright © 2025 . All rights reserved. | </sapn>'. esc_html__( '%1$s &nbsp; %2$s &nbsp; %3$s &nbsp; %4$s', 'akina' ),  $site_map_link, $statistics_link,'<a href="https://github.com/saresam/Asky" rel="designer" target="_blank" rel="nofollow">Theme</a>', '<a href="https://wordpress.org/" target="_blank" rel="nofollow"> | Powered by WordPress</a>'); 
 			?>
           
          
