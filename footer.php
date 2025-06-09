@@ -71,7 +71,7 @@
 			<?php 
 			$statistics_link = akina_option('site_statistics_link') ? '<a href="'.akina_option('site_statistics_link').'" target="_blank" rel="nofollow">Statistics</a>' : '';
 			$site_map_link = akina_option('site_map_link') ? '<a href="'.akina_option('site_map_link').'" target="_blank" rel="nofollow">Sitemap</a>' : '';
-			printf('<span>Copyright © 2025 . All rights reserved. | </sapn>'. esc_html__( '%1$s &nbsp; %2$s &nbsp; %3$s &nbsp; %4$s', 'akina' ),  $site_map_link, $statistics_link,'<a href="https://github.com/saresam/Asky" rel="designer" target="_blank" rel="nofollow">Theme</a>', '<a href="https://wordpress.org/" target="_blank" rel="nofollow"> | Powered by WordPress</a>'); 
+			printf('<span>Copyright © 2017 . All rights reserved. | </sapn>'. esc_html__( '%1$s &nbsp; %2$s &nbsp; %3$s &nbsp; %4$s', 'akina' ),  $site_map_link, $statistics_link,'<a href="https://github.com/saresam/Asky" rel="designer" target="_blank" rel="nofollow">Theme</a>', '<a href="https://wordpress.org/" target="_blank" rel="nofollow"> | Powered by WordPress</a>'); 
 			?>
           
          
@@ -145,14 +145,31 @@ if (screen && screen.width > 800) {
 if ( akina_option('progress_type') == 'loadprogress') { ?>
 	
 <script>
-	jQuery(document).ready(function($) {
-//你的代码
-	$('body').show();
-    $('.version').text(NProgress.version);
-    NProgress.start();
-    setTimeout(function() { NProgress.done(); $('.fade').removeClass('out'); }, 1000);
-});
+document.addEventListener('DOMContentLoaded', function() {
+  // 显示body元素
+  document.body.style.display = 'block';
+  
+  // 显示NProgress版本
+  var versionElements = document.querySelectorAll('.version');
+  versionElements.forEach(function(el) {
+    el.textContent = NProgress.version;
+  });
+  
+  // 启动进度条
+  NProgress.start();
+  
+  // 1秒后执行
+  setTimeout(function() {
+    // 完成进度条
+    NProgress.done();
     
+    // 移除所有.fade元素的out类
+    var fadeElements = document.querySelectorAll('.fade');
+    fadeElements.forEach(function(el) {
+      el.classList.remove('out');
+    });
+  }, 1000);
+});
 </script>
 
 <?php }?>

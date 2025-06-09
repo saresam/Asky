@@ -723,7 +723,6 @@ const Siren = {
                     if (nav) {
                         nav.classList.add('navbar');
                     }
-                    console.log("%c 打开菜单 %c", "background:#9a9da2; color:#ffffff; border-radius:4px;", "", "http://skyarea.cn");
                 } else {
                     showNav.classList.remove('hideNav');
                     showNav.classList.add('showNav');
@@ -731,7 +730,6 @@ const Siren = {
                     if (nav) {
                         nav.classList.remove('navbar');
                     }
-                    console.log("%c 关闭菜单 %c", "background:#9a9da2; color:#ffffff; border-radius:4px;", "", "http://skyarea.cn");
                 }
             });
         }
@@ -740,7 +738,6 @@ const Siren = {
         const loading = document.getElementById("loading");
         if (loading) {
             loading.addEventListener('click', function() {
-                console.log("%c 过渡动画 %c", "background:#9a9da2; color:#ffffff; border-radius:4px;", "", "https://peanoo.com");
                 loading.style.display = 'none';
             });
         }

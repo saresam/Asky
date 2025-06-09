@@ -68,7 +68,7 @@
 			<input type="text" name="email" id="email" class="commenttext" value="<?php echo $comment_author_email; ?>" size="22" placeholder="Email" tabindex="2" maxlength="50"/>
 			<label for="email"></label>
 			
-			<input type="text" name="url" id="url" class="commenttext" value="<?php echo $comment_author_url; ?>" size="22"placeholder="https://"  tabindex="3" maxlength="70"/>
+			<input type="text" name="url" id="url" class="commenttext" value="<?php echo $comment_author_url; ?>" size="22"placeholder="http://"  tabindex="3" maxlength="70"/>
 			<label for="url"></label>
 		
 	</div>

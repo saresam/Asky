@@ -49,6 +49,7 @@ h1.page-title{border-radius: 0px; !important;}
 .author-profile .profile img{border-radius: 0px; !important;}
 .reward-row li img{border-radius: 0px; !important;}
 .single-reward .reward-row{border-radius: 0px; !important;}
+.links ul li{border-radius: 0px; !important;}
 <?php } // liststyle ?>
 <?php // comments
 if ( akina_option('toggle-menu') == 'no') { ?>

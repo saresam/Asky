@@ -991,6 +991,7 @@ function wpdx_remove_language(){
 	echo '<style type="text/css">.language-switcher { display:none; }</style>';
 }
 
+
 //站点维护中
 //function lxtx_wp_maintenance_mode(){
 //    if(!current_user_can('edit_themes') || !is_user_logged_in()){

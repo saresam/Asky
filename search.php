@@ -14,7 +14,9 @@ get_header(); ?>
 
     <?php if (have_posts()) : ?>
         <?php
-        if (akina_option('patternimg') || !get_random_bg_url()) : ?>
+        // 合并条件判断，减少重复代码
+        $show_header = akina_option('patternimg') || !get_random_bg_url();
+        if ($show_header) : ?>
             <header class="page-header">
                 <h1 class="page-title">
                     <?php
@@ -28,7 +30,7 @@ get_header(); ?>
         <?php endif; ?>
 
         <?php
-        // 循环结构
+        // 简化循环结构
         while (have_posts()) : 
             the_post();
             get_template_part('tpl/content', get_post_format());
@@ -38,14 +40,12 @@ get_header(); ?>
 
     else : ?>
         <div class="search-box">
-		<!-- search start -->
             <form class="s-search" method="get" action="<?php echo esc_url(home_url('/')); ?>">
                 <i class="iconfont icon-search"></i>
                 <input class="text-input" type="search" name="s" 
                     placeholder="<?php esc_attr_e('Search...', 'akina') ?>" 
                     value="<?php echo esc_attr(get_search_query()); ?>" required>
             </form>
-			<!-- search end -->
         </div>
 
         <?php get_template_part('tpl/content', 'none'); ?>

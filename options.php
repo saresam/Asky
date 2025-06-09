@@ -231,7 +231,7 @@ function optionsframework_options() {
 		'name' => __('页脚信息', 'options_framework_theme'),
 		'desc' => __('页脚说明文字，支持HTML代码', 'options_framework_theme'),
 		'id' => 'footer_info',
-		'std' => '&copy; 2016',
+		'std' => '&copy; 2025',
 		'type' => 'textarea');
 
 	$options[] = array(
@@ -328,7 +328,7 @@ function optionsframework_options() {
 		'name' => __('使用背景图API', 'options_framework_theme'),
 		'desc' => __('请填写API完整地址，带http//或https//;优先级：API>随机背景>默认背景', 'options_framework_theme'),
 		'id' => 'bgapi',
-		'std' => '',
+		'std' => 'https://www.loliapi.com/acg/',
 		'type' => 'text');
 
 	 $options[] = array(

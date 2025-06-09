@@ -393,6 +393,68 @@ function header_user_menu(){
 }
 
 
+
+// 添加菜单图标字段
+add_action( 'wp_nav_menu_item_custom_fields', 'add_menu_item_icon_field', 10, 4 );
+function add_menu_item_icon_field( $item_id, $item, $depth, $args ) {
+    $icon_value = get_post_meta( $item_id, '_menu_item_icon', true );
+    ?>
+    <p class="field-icon description description-wide">
+        <label for="edit-menu-item-icon-<?php echo $item_id; ?>">
+            <?php _e( '菜单图标代码' ); ?><br />
+            <input 
+                type="text" 
+                id="edit-menu-item-icon-<?php echo $item_id; ?>" 
+                class="widefat code edit-menu-item-icon" 
+                name="menu_item_icon[<?php echo $item_id; ?>]" 
+                value="<?php echo esc_attr( $icon_value ); ?>" 
+            />
+            <span class="description">
+                例如：&lt;i class="iconfont icon-home"&gt;&lt;/i&gt;
+            </span>
+        </label>
+    </p>
+    <?php
+}
+
+// 保存图标字段
+add_action( 'wp_update_nav_menu_item', 'save_menu_item_icon_field', 10, 3 );
+function save_menu_item_icon_field( $menu_id, $menu_item_db_id, $args ) {
+    if ( isset( $_POST['menu_item_icon'][$menu_item_db_id] ) ) {
+        $sanitized_value = wp_kses( $_POST['menu_item_icon'][$menu_item_db_id], array(
+            'i' => array(
+                'class' => array()
+            ),
+            'span' => array(
+                'class' => array()
+            ),
+            'svg' => array(
+                'class' => array(),
+                'viewbox' => array(),
+                'xmlns' => array()
+            ),
+            'path' => array(
+                'd' => array()
+            )
+        ) );
+        update_post_meta( $menu_item_db_id, '_menu_item_icon', $sanitized_value );
+    } else {
+        delete_post_meta( $menu_item_db_id, '_menu_item_icon' );
+    }
+}
+
+// 修改菜单输出
+add_filter( 'nav_menu_item_title', 'display_menu_item_icon', 10, 4 );
+function display_menu_item_icon( $title, $item, $args, $depth ) {
+    if( $args->theme_location == 'primary' ) { // 只对主菜单生效
+        $icon_html = get_post_meta( $item->ID, '_menu_item_icon', true );
+        return $icon_html ? $icon_html . $title : $title;
+    }
+    return $title;
+}
+
+
+
 /*
  * 获取相邻文章缩略图
  * 特色图 -> 文章图 -> 首页图
